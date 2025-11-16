@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第3章：首次项目创建 - KIRO IDE 中文教程</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>KIRO IDE 教程</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-home">首页</a></li>
+                    <li><a href="module-3.html" class="nav-current">第3章</a></li>
+                    <li><a href="index.html#introduction">介绍</a></li>
+                    <li><a href="index.html#beginner">入门篇</a></li>
+                    <li><a href="index.html#intermediate">基础篇</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <div class="breadcrumb-item"><a href="index.html">首页</a></div>
+                <div class="breadcrumb-item"><a href="index.html#beginner">入门篇</a></div>
+                <div class="breadcrumb-item active">第3章：首次项目创建</div>
+            </nav>
+
+            <!-- 进度指示器 -->
+            <div class="progress-indicator">
+                <div class="progress-step completed">
+                    <div class="progress-circle">1</div>
+                    <div class="progress-label">第1章</div>
+                </div>
+                <div class="progress-step completed">
+                    <div class="progress-circle">2</div>
+                    <div class="progress-label">第2章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">3</div>
+                    <div class="progress-label">第3章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">4</div>
+                    <div class="progress-label">第4章</div>
+                </div>
+            </div>
+
+            <!-- 侧边栏导航 -->
+            <aside class="sidebar">
+                <h3>本章导航</h3>
+                <ul class="sidebar-nav">
+                    <li><a href="#project-creation">项目创建流程</a></li>
+                    <li><a href="#project-structure">项目结构</a></li>
+                    <li><a href="#spec-driven-dev">规范驱动开发</a></li>
+                    <li><a href="#basic-operations">基本操作</a></li>
+                    <li><a href="#project-configuration">项目配置</a></li>
+                    <li><a href="#summary">总结</a></li>
+                </ul>
+
+                <h3>学习进度</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 75%"></div>
+                </div>
+                <p class="progress-text">第3章学习中</p>
+
+                <h3>快速操作</h3>
+                <button class="btn btn-secondary" onclick="updateLearningProgress('module-3', true)" style="width: 100%; margin-bottom: 0.5rem;">
+                    标记为已完成
+                </button>
+                <button class="btn" onclick="window.print()" style="width: 100%;">
+                    打印本章
+                </button>
+            </aside>
+
+            <div class="module-header">
+                <h1>第3章：首次项目创建</h1>
+                <p class="module-subtitle">创建新项目流程、项目结构和基本操作指南</p>
+            </div>
+
+            <div class="module-container">
+                <div class="module-objectives">
+                    <h3>学习目标</h3>
+                    <ul>
+                        <li>掌握在KIRO IDE中创建新项目的完整流程</li>
+                        <li>理解KIRO项目的标准结构</li>
+                        <li>学会使用KIRO的规范（Spec）驱动开发方法</li>
+                        <li>熟悉基本的项目管理操作</li>
+                        <li>了解项目配置文件的作用</li>
+                    </ul>
+                </div>
+
+                <div class="module-content">
+                    <h2 id="project-creation">项目创建概述</h2>
+                    <p>在KIRO IDE中创建项目与传统IDE有所不同。KIRO采用规范驱动开发（Spec-driven Development）的方法，这意味着项目创建不仅仅是设置文件结构，还包括定义项目的功能规范。这有助于AI助手更好地理解您的项目需求并提供更精准的帮助。</p>
+
+                    <h2 id="project-creation-steps">创建新项目步骤</h2>
+                    <p>以下是创建新项目的详细步骤：</p>
+
+                    <div class="step-by-step">
+                        <div class="step">
+                            <h4>启动KIRO IDE</h4>
+                            <p>首先确保KIRO IDE已经正确安装并启动。如果这是您首次使用KIRO，可能需要完成登录和初始配置步骤。</p>
+                        </div>
+
+                        <div class="step">
+                            <h4>打开项目创建界面</h4>
+                            <p>在KIRO IDE的启动界面，点击 <span class="highlight">"Create New Project"</span> 按钮，或者在菜单栏选择 <span class="highlight">"File" > "New Project"</span>。</p>
+                        </div>
+
+                        <div class="step">
+                            <h4>选择项目模板</h4>
+                            <p>KIRO提供多种项目模板来帮助您快速开始：</p>
+                            <ul>
+                                <li><strong>Basic Project</strong>：基本的项目结构，适合简单应用</li>
+                                <li><strong>Web Application</strong>：包含前端和后端的Web应用模板</li>
+                                <li><strong>API Service</strong>：REST API服务模板</li>
+                                <li><strong>Mobile App</strong>：移动应用开发模板</li>
+                                <li><strong>Custom</strong>：自定义项目结构</li>
+                            </ul>
+                            <p>对于首次项目，建议选择 <span class="highlight">"Basic Project"</span>。</p>
+                        </div>
+
+                        <div class="step">
+                            <h4>配置项目信息</h4>
+                            <p>在项目配置界面中，填写以下信息：</p>
+                            <ul>
+                                <li><strong>项目名称</strong>：输入项目的名称（例如 "HelloKiro"）</li>
+                                <li><strong>项目位置</strong>：选择项目在本地的存储路径</li>
+                                <li><strong>项目类型</strong>：选择项目的主要编程语言</li>
+                                <li><strong>版本控制</strong>：选择是否初始化Git仓库</li>
+                            </ul>
+                        </div>
+
+                        <div class="step">
+                            <h4>定义初始规范（Spec）</h3>
+                            <p>这是KIRO项目创建的核心步骤。在项目创建界面中，您需要定义项目的初始规范：</p>
+                            <div class="code-block">
+                                <code># HelloKiro 项目规范
+
+## 项目概述
+创建一个简单的Hello World应用，展示KIRO IDE的基本功能。
+
+## 功能需求
+1. 在控制台输出 "Hello, KIRO IDE!"
+2. 接受用户输入并个性化问候
+3. 显示当前时间
+
+## 技术要求
+- 使用JavaScript语言
+- 代码应具有适当的注释
+- 遵循基本的编码规范</code>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <h4>完成项目创建</h4>
+                            <p>点击 <span class="highlight">"Create Project"</span> 按钮，KIRO IDE将根据您定义的规范生成项目结构和初始代码。</p>
+                        </div>
+                    </div>
+
+                    <h2 id="project-structure">KIRO项目结构</h2>
+                    <p>创建项目后，您将看到以下标准项目结构：</p>
+
+                    <div class="project-structure">
+.kiro-project/
+├── .kiro/
+│   ├── config.json          # KIRO项目配置
+│   ├── specs/               # 规范文件目录
+│   │   └── main.spec        # 主规范文件
+│   └── workspace.json       # 工作区配置
+├── src/                     # 源代码目录
+│   ├── main.js              # 主程序文件
+│   └── utils.js             # 工具函数
+├── tests/                   # 测试文件目录
+├── docs/                    # 项目文档
+├── README.md                # 项目说明文件
+└── package.json             # 项目依赖配置（如适用）
+                    </div>
+
+                    <h3>关键目录和文件说明：</h3>
+                    <ul>
+                        <li><span class="highlight">.kiro/</span>：KIRO专用配置目录，包含项目配置和规范文件</li>
+                        <li><span class="highlight">specs/</span>：存储项目规范文件，这是KIRO的核心特性之一</li>
+                        <li><span class="highlight">src/</span>：源代码目录，存放主要的程序代码</li>
+                        <li><span class="highlight">tests/</span>：测试代码目录</li>
+                        <li><span class="highlight">docs/</span>：项目文档目录</li>
+                    </ul>
+
+                    <h2 id="spec-driven-dev">规范（Spec）文件详解</h2>
+                    <p>规范文件是KIRO IDE的核心概念，它使用特定的格式来描述项目需求：</p>
+
+                    <div class="code-block">
+                        <code># 项目规范示例
+
+## 模块概述
+描述该模块的功能和目的
+
+## 功能需求
+- 功能点1：详细描述
+- 功能点2：详细描述
+- 功能点3：详细描述
+
+## 输入输出
+- 输入：数据类型和格式要求
+- 输出：期望的输出格式
+
+## 边界条件
+- 特殊情况处理
+- 错误处理要求
+
+## 性能要求
+- 响应时间要求
+- 资源使用限制</code>
+                    </div>
+
+                    <p>当您修改规范文件时，KIRO的AI助手会分析变更并建议相应的代码修改，这大大提高了开发效率和代码质量。</p>
+
+                    <h2 id="basic-operations">基本操作指南</h2>
+                    <p>创建项目后，您可以执行以下基本操作：</p>
+
+                    <h3>1. 编辑代码</h3>
+                    <p>在 <span class="highlight">src/</span> 目录中打开主程序文件，您可以开始编辑代码。KIRO会根据规范文件提供智能代码补全和建议。</p>
+
+                    <h3>2. 运行项目</h3>
+                    <p>在KIRO IDE中运行项目非常简单：</p>
+                    <ol>
+                        <li>确保主程序文件处于活动状态</li>
+                        <li>点击工具栏中的 <span class="highlight">"Run"</span> 按钮，或使用快捷键 <code>Ctrl+R</code> (Windows/Linux) 或 <code>Cmd+R</code> (macOS)</li>
+                        <li>观察终端输出以查看程序运行结果</li>
+                    </ol>
+
+                    <h3>3. 查看AI建议</h3>
+                    <p>KIRO的AI助手会持续分析您的代码和规范，提供改进建议：</p>
+                    <ol>
+                        <li>在代码编辑器中，您会看到AI建议的提示标记</li>
+                        <li>将鼠标悬停在提示标记上查看建议详情</li>
+                        <li>点击建议可以选择接受或拒绝</li>
+                    </ol>
+
+                    <h3>4. 更新规范</h3>
+                    <p>随着项目开发的进行，您可能需要更新规范文件：</p>
+                    <ol>
+                        <li>在 <span class="highlight">.kiro/specs/</span> 目录中打开规范文件</li>
+                        <li>添加新的功能需求或修改现有需求</li>
+                        <li>KIRO会分析变更并建议相应的代码修改</li>
+                    </ol>
+
+                    <h2 id="project-configuration">项目配置</h2>
+                    <p>KIRO项目包含几个重要的配置文件：</p>
+
+                    <h3>.kiro/config.json</h3>
+                    <p>这个文件包含项目的KIRO特定配置：</p>
+                    <div class="code-block">
+                        <code>{
+  "projectName": "HelloKiro",
+  "language": "javascript",
+  "aiModel": "default",
+  "codeStyle": "standard",
+  "autoSave": true,
+  "aiSuggestions": true
+}</code>
+                    </div>
+
+                    <h3>package.json（对于JavaScript项目）</h3>
+                    <p>如果您的项目是JavaScript项目，会包含标准的package.json文件来管理依赖。</p>
+
+                    <div class="tip-box">
+                        <h3>小贴士</h3>
+                        <p>在KIRO中，规范文件不仅仅是文档，而是开发过程的驱动因素。维护清晰、详细的规范将使AI助手能够提供更准确的帮助，从而提高开发效率。</p>
+                    </div>
+
+                    <h2>常见问题及解决方案</h2>
+                    <h3>问题1：项目创建失败</h3>
+                    <p><strong>原因：</strong>可能是路径权限问题或路径包含特殊字符</p>
+                    <p><strong>解决方案：</strong>确保选择的项目路径有适当的读写权限，避免使用包含空格或特殊字符的路径。</p>
+
+                    <h3>问题2：AI助手没有响应</h3>
+                    <p><strong>原因：</strong>网络连接问题或AI服务不可用</p>
+                    <p><strong>解决方案：</strong>检查网络连接，确保有稳定的互联网连接，然后重新启动KIRO IDE。</p>
+
+                    <h3>问题3：规范文件格式错误</h3>
+                    <p><strong>原因：</strong>规范文件语法不正确</p>
+                    <p><strong>解决方案：</strong>确保使用正确的Markdown语法，KIRO规范文件本质上是特殊的Markdown文件。</p>
+
+                    <h2>最佳实践</h2>
+                    <p>以下是使用KIRO创建项目时的最佳实践：</p>
+                    <ul>
+                        <li><strong>详细定义规范</strong>：在项目开始时尽可能详细地定义规范，这将使AI助手能够提供更准确的帮助</li>
+                        <li><strong>定期更新规范</strong>：随着项目的发展，及时更新规范文件以反映新的需求和变更</li>
+                        <li><strong>使用版本控制</strong>：始终启用Git版本控制来跟踪代码和规范的变更</li>
+                        <li><strong>模块化开发</strong>：将复杂功能分解为多个小模块，每个模块可以有自己的规范文件</li>
+                        <li><strong>定期审查AI建议</strong>：虽然AI建议通常很有帮助，但仍需人工审查以确保符合项目需求</li>
+                    </ul>
+
+                    <h2 id="summary">总结</h2>
+                    <p>通过本章的学习，您已经掌握了如何在KIRO IDE中创建新项目。您了解了KIRO项目的标准结构，特别是规范驱动开发的核心概念。现在您可以开始创建自己的KIRO项目了。在下一章中，我们将深入探讨KIRO IDE的用户界面，帮助您更熟练地使用这个强大的开发环境。</p>
+                </div>
+
+                <div class="module-nav">
+                    <div class="nav-prev">
+                        <a href="module-2.html" class="btn">← 第2章：安装与设置</a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="module-4.html" class="btn">第4章：界面熟悉 →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KIRO IDE 中文教程. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

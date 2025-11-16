@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第2章：安装与设置 - KIRO IDE 中文教程</title>
+    <link rel="stylesheet" href="styles.css">
+    <style></style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>KIRO IDE 教程</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-home">首页</a></li>
+                    <li><a href="module-2.html" class="nav-current">第2章</a></li>
+                    <li><a href="index.html#introduction">介绍</a></li>
+                    <li><a href="index.html#beginner">入门篇</a></li>
+                    <li><a href="index.html#intermediate">基础篇</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <div class="breadcrumb-item"><a href="index.html">首页</a></div>
+                <div class="breadcrumb-item"><a href="index.html#beginner">入门篇</a></div>
+                <div class="breadcrumb-item active">第2章：安装与设置</div>
+            </nav>
+
+            <!-- 进度指示器 -->
+            <div class="progress-indicator">
+                <div class="progress-step completed">
+                    <div class="progress-circle">1</div>
+                    <div class="progress-label">第1章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">2</div>
+                    <div class="progress-label">第2章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">3</div>
+                    <div class="progress-label">第3章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">4</div>
+                    <div class="progress-label">第4章</div>
+                </div>
+            </div>
+
+            <!-- 侧边栏导航 -->
+            <aside class="sidebar">
+                <h3>本章导航</h3>
+                <ul class="sidebar-nav">
+                    <li><a href="#system-requirements">系统要求</a></li>
+                    <li><a href="#installation-steps">安装步骤</a></li>
+                    <li><a href="#initial-configuration">初始配置</a></li>
+                    <li><a href="#basic-settings">基本设置</a></li>
+                    <li><a href="#troubleshooting">验证安装</a></li>
+                    <li><a href="#common-issues">常见问题</a></li>
+                    <li><a href="#summary">总结</a></li>
+                </ul>
+
+                <h3>学习进度</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 50%"></div>
+                </div>
+                <p class="progress-text">第2章学习中</p>
+
+                <h3>快速操作</h3>
+                <button class="btn btn-secondary" onclick="updateLearningProgress('module-2', true)" style="width: 100%; margin-bottom: 0.5rem;">
+                    标记为已完成
+                </button>
+                <button class="btn" onclick="window.print()" style="width: 100%;">
+                    打印本章
+                </button>
+            </aside>
+
+            <div class="module-header">
+                <h1>第2章：安装与设置</h1>
+                <p class="module-subtitle">系统要求、安装步骤和初始配置</p>
+            </div>
+
+            <div class="module-container">
+                <div class="module-objectives">
+                    <h3>学习目标</h3>
+                    <ul>
+                        <li>了解KIRO IDE的系统要求</li>
+                        <li>掌握KIRO IDE的下载和安装方法</li>
+                        <li>完成KIRO IDE的初始配置</li>
+                        <li>了解基本的设置选项</li>
+                        <li>准备开发环境</li>
+                    </ul>
+                </div>
+
+                <div class="module-content">
+                    <h2 id="system-requirements">系统要求</h2>
+                    <p>在安装KIRO IDE之前，请确保您的系统满足以下最低要求：</p>
+
+                    <div class="system-requirements">
+                        <h3>操作系统</h3>
+                        <ul>
+                            <li><strong>Windows</strong>：Windows 10 或更高版本</li>
+                            <li><strong>macOS</strong>：macOS 10.15 (Catalina) 或更高版本</li>
+                            <li><strong>Linux</strong>：Ubuntu 18.04, Fedora 32, 或其他支持的发行版</li>
+                        </ul>
+
+                        <h3>硬件要求</h3>
+                        <ul>
+                            <li><strong>处理器</strong>：Intel Core i5 或 AMD Ryzen 5 及以上</li>
+                            <li><strong>内存</strong>：8GB RAM（推荐16GB或更高）</li>
+                            <li><strong>存储</strong>：至少2GB可用空间</li>
+                            <li><strong>网络</strong>：稳定的互联网连接（KIRO需要连接云服务）</li>
+                        </ul>
+
+                        <h3>其他要求</h3>
+                        <ul>
+                            <li>有效的AWS账户（KIRO与AWS集成）</li>
+                            <li>现代网络浏览器（用于某些云功能）</li>
+                        </ul>
+                    </div>
+
+                    <h2 id="download-kiro">下载KIRO IDE</h2>
+                    <p>要下载KIRO IDE，请按照以下步骤操作：</p>
+
+                    <ol>
+                        <li>访问KIRO官方网站：<a href="https://kiro.dev" target="_blank">https://kiro.dev</a></li>
+                        <li>点击页面上的"Downloads"按钮</li>
+                        <li>选择适合您操作系统的版本</li>
+                        <li>点击下载按钮开始下载安装文件</li>
+                    </ol>
+
+                    <div class="tip-box">
+                        <h3>小贴士</h3>
+                        <p>由于KIRO IDE仍在公开预览阶段，安装文件可能会频繁更新。建议定期检查是否有新版本可用，以获得最新的功能和改进。</p>
+                    </div>
+
+                    <h2 id="installation-steps">安装步骤</h2>
+                    <p>以下是在不同操作系统上安装KIRO IDE的详细步骤：</p>
+
+                    <h3>在Windows上安装</h3>
+                    <div class="installation-steps">
+                        <div class="installation-step">
+                            <h4>运行安装程序</h4>
+                            <p>双击下载的安装文件（通常名为<code>kiro-installer.exe</code>）以启动安装向导。</p>
+                        </div>
+
+                        <div class="installation-step">
+                            <h4>接受许可协议</h4>
+                            <p>阅读并接受KIRO IDE的许可协议。请仔细阅读协议内容，了解您的权利和义务。</p>
+                        </div>
+
+                        <div class="installation-step">
+                            <h4>选择安装位置</h4>
+                            <p>默认安装位置通常在<code>C:\Program Files\Kiro</code>。您可以选择其他位置，但建议保持默认设置以确保最佳兼容性。</p>
+                        </div>
+
+                        <div class="installation-step">
+                            <h4>选择组件</h4>
+                            <p>安装程序会提供一些可选组件，如快捷方式、环境变量等。建议选择所有默认选项以获得完整功能。</p>
+                        </div>
+
+                        <div class="installation-step">
+                            <h4>完成安装</h4>
+                            <p>点击"安装"按钮开始安装过程。安装完成后，您可以选择启动KIRO IDE。</p>
+                        </div>
+                    </div>
+
+                    <h3>在macOS上安装</h3>
+                    <div class="installation-steps">
+                        <div class="installation-step">
+                            <h4>打开安装文件</h4>
+                            <p>双击下载的<code>.dmg</code>文件（例如<code>kiro-installer.dmg</code>）来挂载安装磁盘。</p>
+                        </div>
+
+                        <div class="installation-step">
+                            <h4>拖拽应用</h4>
+                            <p>将KIRO IDE图标拖拽到"Applications"文件夹中完成安装。</p>
+                        </div>
+
+                        <div class="installation-step">
+                            <h4>首次启动</h4>
+                            <p>在"Applications"文件夹中找到KIRO IDE并双击启动。macOS可能会显示安全警告，需要在"系统偏好设置" > "安全性与隐私"中允许应用运行。</p>
+                        </div>
+                    </div>
+
+                    <h3>在Linux上安装</h3>
+                    <div class="installation-steps">
+                        <div class="installation-step">
+                            <h4>解压安装包</h4>
+                            <p>打开终端，导航到下载目录并解压安装文件：</p>
+                            <div class="code-block">
+                                <code>tar -xf kiro-installer-linux.tar.gz</code>
+                            </div>
+                        </div>
+
+                        <div class="installation-step">
+                            <h4>运行安装脚本</h4>
+                            <p>进入解压后的目录并运行安装脚本：</p>
+                            <div class="code-block">
+                                <code>cd kiro-installer
+sudo ./install.sh</code>
+                            </div>
+                        </div>
+
+                        <div class="installation-step">
+                            <h4>启动KIRO IDE</h4>
+                            <p>安装完成后，您可以通过终端命令或桌面环境启动KIRO IDE：</p>
+                            <div class="code-block">
+                                <code>kiro-ide</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 id="initial-configuration">初始配置向导</h2>
+                    <p>首次启动KIRO IDE时，您将看到初始配置向导，需要完成以下设置：</p>
+
+                    <h3>1. 用户账户设置</h3>
+                    <p>系统会提示您登录或创建AWS账户。KIRO IDE与AWS深度集成，因此需要有效的AWS账户才能使用全部功能。</p>
+
+                    <h3>2. 偏好设置</h3>
+                    <p>您可以根据个人喜好调整以下设置：</p>
+                    <ul>
+                        <li><strong>主题</strong>：选择明亮或暗色主题</li>
+                        <li><strong>语言</strong>：选择界面显示语言</li>
+                        <li><strong>字体大小</strong>：调整代码编辑器的字体大小</li>
+                        <li><strong>AI模型偏好</strong>：选择偏好的AI模型（如果有多选项）</li>
+                    </ul>
+
+                    <h3>3. AI功能配置</h3>
+                    <p>KIRO的AI功能需要配置相关参数：</p>
+                    <ul>
+                        <li>设置AI响应的详细程度偏好</li>
+                        <li>配置代码生成的样式指南</li>
+                        <li>设置隐私选项（选择是否共享使用数据以改进AI模型）</li>
+                    </ul>
+
+                    <h2 id="basic-settings">基本设置选项</h2>
+                    <p>安装完成后，您可以通过"File" > "Preferences"（或"KIRO" > "Preferences"在macOS上）访问更详细的设置选项：</p>
+
+                    <h3>编辑器设置</h3>
+                    <ul>
+                        <li><strong>自动补全</strong>：启用/禁用代码自动补全功能</li>
+                        <li><strong>语法高亮</strong>：自定义不同语言的语法高亮颜色</li>
+                        <li><strong>制表符设置</strong>：设置制表符宽度和是否使用空格代替制表符</li>
+                        <li><strong>自动保存</strong>：设置自动保存间隔时间</li>
+                    </ul>
+
+                    <h3>AI助手设置</h3>
+                    <ul>
+                        <li><strong>提示词格式</strong>：自定义与AI交互的提示词格式</li>
+                        <li><strong>代码风格</strong>：设置AI生成代码时的风格偏好</li>
+                        <li><strong>安全过滤</strong>：设置AI响应的安全过滤级别</li>
+                    </ul>
+
+                    <h3>集成设置</h3>
+                    <ul>
+                        <li><strong>Git配置</strong>：设置Git用户名和邮箱</li>
+                        <li><strong>终端设置</strong>：配置内置终端的默认shell</li>
+                        <li><strong>外部工具</h3>：配置外部编辑器和工具的路径</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <h3>注意</h3>
+                        <p>在公开预览阶段，KIRO IDE可能不稳定。建议定期备份您的项目和设置，以防数据丢失。同时，某些功能可能在正式版发布时有所变化。</p>
+                    </div>
+
+                    <h2 id="troubleshooting">验证安装</h2>
+                    <p>安装和配置完成后，验证KIRO IDE是否正常工作：</p>
+                    <ol>
+                        <li>启动KIRO IDE</li>
+                        <li>检查界面是否正常显示</li>
+                        <li>尝试创建一个简单的文本文件并保存</li>
+                        <li>检查AI助手是否可以正常响应（尝试输入一个简单的编程问题）</li>
+                        <li>确认所有基本功能都可正常使用</li>
+                    </ol>
+
+                    <h2 id="common-issues">常见安装问题及解决方案</h2>
+                    <h3>问题1：安装程序无法运行</h3>
+                    <p><strong>解决方案：</strong>确保您有管理员权限，并且系统满足最低要求。尝试以管理员身份运行安装程序。</p>
+
+                    <h3>问题2：AI功能无法使用</h3>
+                    <p><strong>解决方案：</strong>检查网络连接是否正常，确保AWS账户已正确配置，且有足够的权限使用相关服务。</p>
+
+                    <h3>问题3：性能问题</h3>
+                    <p><strong>解决方案：</strong>关闭不必要的程序释放内存，考虑升级硬件配置，或在设置中调整AI功能的资源使用。</p>
+
+                    <h2 id="summary">总结</h2>
+                    <p>通过本章的学习，您已经成功安装并配置了KIRO IDE。现在您已经准备好开始使用KIRO进行开发了。在下一章中，我们将学习如何创建您的第一个KIRO项目，并熟悉KIRO的用户界面。</p>
+                </div>
+
+                <div class="module-nav">
+                    <div class="nav-prev">
+                        <a href="module-1.html" class="btn">← 第1章：KIRO IDE 简介</a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="module-3.html" class="btn">第3章：首次项目创建 →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KIRO IDE 中文教程. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

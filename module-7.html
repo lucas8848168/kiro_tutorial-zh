@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第7章：Chat 功能基础 - KIRO IDE 中文教程</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>KIRO IDE 教程</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-home">首页</a></li>
+                    <li><a href="module-7.html" class="nav-current">第7章</a></li>
+                    <li><a href="index.html#introduction">介绍</a></li>
+                    <li><a href="index.html#beginner">入门篇</a></li>
+                    <li><a href="index.html#advanced">进阶篇</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <div class="breadcrumb-item"><a href="index.html">首页</a></div>
+                <div class="breadcrumb-item"><a href="index.html#advanced">进阶篇</a></div>
+                <div class="breadcrumb-item active">第7章：Chat 功能基础</div>
+            </nav>
+
+            <!-- 进度指示器 -->
+            <div class="progress-indicator">
+                <div class="progress-step completed">
+                    <div class="progress-circle">1</div>
+                    <div class="progress-label">第1章</div>
+                </div>
+                <div class="progress-step completed">
+                    <div class="progress-circle">2</div>
+                    <div class="progress-label">第2章</div>
+                </div>
+                <div class="progress-step completed">
+                    <div class="progress-circle">3</div>
+                    <div class="progress-label">第3章</div>
+                </div>
+                <div class="progress-step completed">
+                    <div class="progress-circle">4</div>
+                    <div class="progress-label">第4章</div>
+                </div>
+                <div class="progress-step completed">
+                    <div class="progress-circle">5</div>
+                    <div class="progress-label">第5章</div>
+                </div>
+                <div class="progress-step completed">
+                    <div class="progress-circle">6</div>
+                    <div class="progress-label">第6章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">7</div>
+                    <div class="progress-label">第7章</div>
+                </div>
+            </div>
+
+            <!-- 侧边栏导航 -->
+            <aside class="sidebar">
+                <h3>本章导航</h3>
+                <ul class="sidebar-nav">
+                    <li><a href="#chat-overview">Chat 功能概览</a></li>
+                    <li><a href="#basic-interaction">基本交互</a></li>
+                    <li><a href="#model-selection">模型选择</a></li>
+                    <li><a href="#chat-examples">Chat 示例</a></li>
+                    <li><a href="#troubleshooting">常见问题</a></li>
+                    <li><a href="#best-practices">最佳实践</a></li>
+                    <li><a href="#summary">总结</a></li>
+                </ul>
+
+                <h3>学习进度</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 175%"></div>
+                </div>
+                <p class="progress-text">第7章学习中</p>
+
+                <h3>快速操作</h3>
+                <button class="btn btn-secondary" onclick="updateLearningProgress('module-7', true)" style="width: 100%; margin-bottom: 0.5rem;">
+                    标记为已完成
+                </button>
+                <button class="btn" onclick="window.print()" style="width: 100%;">
+                    打印本章
+                </button>
+            </aside>
+
+            <div class="module-header">
+                <h1>第7章：Chat 功能基础</h1>
+                <p class="module-subtitle">与KIRO AI助手的基础交互</p>
+            </div>
+
+            <div class="module-container">
+                <div class="module-objectives">
+                    <h3>学习目标</h3>
+                    <ul>
+                        <li>熟悉KIRO Chat界面的布局和功能组件</li>
+                        <li>掌握与AI助手进行基本交互的技巧</li>
+                        <li>了解不同AI模型的特点和选择方法</li>
+                        <li>学会利用Chat功能进行代码解释和问题解答</li>
+                        <li>理解与AI协作的基础工作流程</li>
+                    </ul>
+                </div>
+
+                <div class="module-content">
+                    <h2>KIRO Chat概述</h2>
+                    <p>KIRO的Chat功能是其AI辅助开发的核心组成部分。通过自然语言交互，您可以与AI助手讨论代码、获取建议、解决问题，甚至让AI生成代码片段。Chat功能旨在成为您的智能编程伙伴，帮助您更高效地开发软件。</p>
+
+                    <h2>Chat界面介绍</h2>
+                    <p>KIRO的Chat界面设计简洁直观，包含以下几个主要组件：</p>
+
+                    <div class="chat-section">
+                        <h3>1. 聊天输入区</h3>
+                        <p>位于界面底部的输入框，您可以在这里输入问题或指令。输入框支持：</p>
+                        <ul>
+                            <li>多行输入（使用Shift+Enter换行）</li>
+                            <li>粘贴代码片段</li>
+                            <li>使用快捷命令</li>
+                            <li>上下文引用功能</li>
+                        </ul>
+                    </div>
+
+                    <div class="chat-section">
+                        <h3>2. 对话历史区</h3>
+                        <p>显示您与AI助手的完整对话历史，包括：</p>
+                        <ul>
+                            <li>您的问题和指令</li>
+                            <li>AI的响应和建议</li>
+                            <li>生成的代码片段</li>
+                            <li>错误分析和解决方案</li>
+                        </ul>
+                    </div>
+
+                    <div class="chat-section">
+                        <h3>3. 上下文面板</h3>
+                        <p>显示当前的代码上下文，包括：</p>
+                        <ul>
+                            <li>当前编辑的文件内容</li>
+                            <li>选中的代码片段</li>
+                            <li>相关项目文件</li>
+                            <li>项目规范（Specs）</li>
+                        </ul>
+                    </div>
+
+                    <div class="chat-section">
+                        <h3>4. 工具面板</h3>
+                        <p>提供快速访问AI相关功能的按钮：</p>
+                        <ul>
+                            <li>代码生成</li>
+                            <li>代码解释</li>
+                            <li>错误诊断</li>
+                            <li>文档生成</li>
+                        </ul>
+                    </div>
+
+                    <h2>基本交互技巧</h2>
+                    <p>掌握有效的交互技巧可以显著提升与AI助手的协作效率：</p>
+
+                    <h3>1. 清晰的问题表述</h3>
+                    <p>提出问题时，尽量具体和明确：</p>
+                    <ul>
+                        <li>说明您想要实现什么功能</li>
+                        <li>提供必要的上下文信息</li>
+                        <li>指出遇到的具体问题</li>
+                        <li>指定预期的输出格式</li>
+                    </ul>
+
+                    <div class="chat-example">
+                        <h3>良好问题示例</h3>
+                        <p><strong>好：</strong>"帮我优化这个函数的性能，它目前在处理大数据集时运行很慢。当前代码如下：[代码片段]。目标是减少执行时间至少50%。"</p>
+                        <p><strong>需要改进：</strong>"这个函数有问题，帮我修一下。"</p>
+                    </div>
+
+                    <h3>2. 提供代码上下文</h3>
+                    <p>在询问问题时，提供相关的代码片段和上下文信息：</p>
+                    <ul>
+                        <li>粘贴相关代码片段</li>
+                        <li>说明代码的预期功能</li>
+                        <li>描述当前的行为</li>
+                        <li>提供错误信息（如果有）</li>
+                    </ul>
+
+                    <h3>3. 逐步细化需求</h3>
+                    <p>对于复杂需求，可以分步骤与AI交互：</p>
+                    <ol>
+                        <li>先描述高层次的需求</li>
+                        <li>根据AI的建议细化要求</li>
+                        <li>逐步添加技术细节</li>
+                        <li>验证最终的实现</li>
+                    </ol>
+
+                    <h2>模型选择指南</h2>
+                    <p>KIRO支持多种AI模型，每种模型有其特点和适用场景：</p>
+
+                    <div class="chat-section">
+                        <h3>1. 通用模型</h3>
+                        <p>适用于大多数开发任务：</p>
+                        <ul>
+                            <li>平衡性能和准确性</li>
+                            <li>支持多种编程语言</li>
+                            <li>适合日常编码任务</li>
+                            <li>响应速度较快</li>
+                        </ul>
+                        <p><strong>使用场景：</strong>代码生成、错误调试、文档编写等日常任务</p>
+                    </div>
+
+                    <div class="chat-section">
+                        <h3>2. 专业模型</h3>
+                        <p>针对特定领域进行优化：</p>
+                        <ul>
+                            <li>在特定领域有更高准确性</li>
+                            <li>理解领域特定概念</li>
+                            <li>提供更专业的建议</li>
+                            <li>可能需要更多处理时间</li>
+                        </ul>
+                        <p><strong>使用场景：</strong>复杂算法实现、架构设计、性能优化等</p>
+                    </div>
+
+                    <div class="chat-section">
+                        <h3>3. 快速模型</h3>
+                        <p>注重响应速度的轻量级模型：</p>
+                        <ul>
+                            <li>响应速度最快</li>
+                            <li>适合简单查询</li>
+                            <li>资源消耗较低</li>
+                            <li>复杂任务能力有限</li>
+                        </ul>
+                        <p><strong>使用场景：</strong>语法查询、快速建议、简单代码片段生成</p>
+                    </div>
+
+                    <p>您可以在Chat设置中选择默认模型，也可以为特定对话选择不同的模型。</p>
+
+                    <h2>与AI协作的基础</h2>
+                    <p>与KIRO AI助手有效协作的关键在于建立良好的沟通模式：</p>
+
+                    <h3>1. 代码解释请求</h3>
+                    <p>当您遇到不熟悉的代码时，可以直接请求AI解释：</p>
+                    <div class="chat-example">
+                        <div class="code-block">
+                            <code>// 选中的代码片段
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}</code>
+                        </div>
+                        <p><strong>聊天请求：</strong>"请解释这个防抖函数的工作原理和使用场景。"</p>
+                    </div>
+
+                    <h3>2. 代码生成请求</h3>
+                    <p>可以请求AI生成特定功能的代码：</p>
+                    <p><strong>聊天请求：</strong>"帮我创建一个函数，用于验证电子邮件地址的格式。要求使用正则表达式，返回布尔值。"</p>
+
+                    <div class="chat-example">
+                        <div class="code-block">
+                            <code>// AI生成的代码
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}</code>
+                        </div>
+                    </div>
+
+                    <h3>3. 错误诊断</h3>
+                    <p>当遇到错误时，提供错误信息和相关代码：</p>
+                    <p><strong>聊天请求：</strong>"我收到这个错误：'TypeError: Cannot read property 'length' of undefined'。这是我的代码：[代码片段]。请帮我找出问题并修复。"</p>
+
+                    <h2>Chat功能的高级用法</h2>
+                    <p>除了基本交互，KIRO Chat还支持一些高级功能：</p>
+
+                    <h3>1. 会话管理</h3>
+                    <p>可以创建和管理多个聊天会话：</p>
+                    <ul>
+                        <li>为不同项目创建独立会话</li>
+                        <li>保存重要对话以供后续参考</li>
+                        <li>在会话间快速切换</li>
+                        <li>导出对话历史用于文档</li>
+                    </ul>
+
+                    <h3>2. 上下文控制</h3>
+                    <p>可以控制AI访问的上下文范围：</p>
+                    <ul>
+                        <li>限制到当前文件</li>
+                        <li>包含整个项目</li>
+                        <li>引用特定的Spec文件</li>
+                        <li>临时提供额外上下文</li>
+                    </ul>
+
+                    <h3>3. 提示词模板</h3>
+                    <p>KIRO提供了一些常用的提示词模板：</p>
+                    <ul>
+                        <li><span class="highlight">"Explain this code"</span> - 解释选中的代码</li>
+                        <li><span class="highlight">"Fix this bug"</span> - 修复选中的错误</li>
+                        <li><span class="highlight">"Optimize this"</span> - 优化选中的代码</li>
+                        <li><span class="highlight">"Add comments"</span> - 为代码添加注释</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <h3>小贴士</h3>
+                        <p>充分利用KIRO的"引用选中代码"功能（通常通过右键菜单或快捷键访问），这样可以快速将当前编辑器中的代码片段包含在聊天消息中，避免手动复制粘贴的麻烦。</p>
+                    </div>
+
+                    <h2>常见问题及解决方案</h2>
+                    <h3>问题1：AI响应不够准确</h3>
+                    <p><strong>原因：</strong>问题描述不够清晰或上下文信息不足</p>
+                    <p><strong>解决方案：</strong>提供更详细的描述，包括预期行为、当前行为和相关上下文信息。</p>
+
+                    <h3>问题2：AI生成的代码不工作</h3>
+                    <p><strong>原因：</strong>AI可能不了解项目的具体配置或依赖</p>
+                    <p><strong>解决方案：</strong>提供更多的项目上下文，包括框架、库版本和配置信息。</p>
+
+                    <h3>问题3：聊天响应速度慢</h3>
+                    <p><strong>原因：</strong>可能是网络问题或选择了复杂的AI模型</p>
+                    <p><strong>解决方案：</strong>检查网络连接，或尝试切换到轻量级模型处理简单任务。</p>
+
+                    <h2>最佳实践</h2>
+                    <p>以下是使用KIRO Chat功能的最佳实践：</p>
+                    <ul>
+                        <li><strong>保持对话连贯性</strong>：在同一个会话中讨论相关主题，AI会记住之前的上下文</li>
+                        <li><strong>验证AI建议</strong>：虽然AI通常很准确，但仍需人工验证生成的代码</li>
+                        <li><strong>利用代码引用</strong>：使用"引用选中代码"功能来包含相关代码片段</li>
+                        <li><strong>定期清理会话</strong>：长期会话可能影响性能，定期开始新的会话</li>
+                        <li><strong>结合Spec使用</strong>：在讨论功能实现时引用相关规范文件</li>
+                    </ul>
+
+                    <h2>总结</h2>
+                    <p>通过本章的学习，您已经掌握了KIRO Chat功能的基础知识，包括界面组件、基本交互技巧和模型选择。Chat功能是KIRO最强大的特性之一，有效利用它将显著提高您的开发效率。在下一章中，我们将深入探讨高级Spec使用技巧，学习如何设计复杂规范和最佳实践。</p>
+                </div>
+
+                <div class="module-nav">
+                    <div class="nav-prev">
+                        <a href="module-6.html" class="btn">← 第6章：Specs 使用指南</a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="module-8.html" class="btn">第8章：高级 Spec 使用 →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KIRO IDE 中文教程. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

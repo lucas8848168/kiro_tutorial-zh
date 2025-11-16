@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航按钮测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav-menu li {
+            margin-right: 20px;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        .nav-menu a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+        .content {
+            margin-top: 80px;
+            padding: 20px;
+        }
+        .section {
+            height: 600px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        #beginner {
+            background-color: #f0f8ff;
+        }
+        #intermediate {
+            background-color: #f5f5dc;
+        }
+        #advanced {
+            background-color: #f8f8ff;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="module-2.html">第2章</a></li>
+            <li><a href="#beginner">入门篇</a></li>
+            <li><a href="#intermediate">基础篇</a></li>
+            <li><a href="#advanced">进阶篇</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>导航按钮测试</h1>
+        <p>点击导航菜单中的“入门篇”、“基础篇”或“进阶篇”按钮，测试是否能正确跳转到相应页面。</p>
+        <p>如果在首页(index.html)，应平滑滚动到对应章节；如果在模块页面(module-*.html)，应跳转到首页的对应章节。</p>
+
+        <div class="section" id="beginner">
+            <h2>入门篇</h2>
+            <p>这是入门篇的内容...</p>
+        </div>
+
+        <div class="section" id="intermediate">
+            <h2>基础篇</h2>
+            <p>这是基础篇的内容...</p>
+        </div>
+
+        <div class="section" id="advanced">
+            <h2>进阶篇</h2>
+            <p>这是进阶篇的内容...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

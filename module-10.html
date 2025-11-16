@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第10章：Hooks与自动化 - KIRO IDE 中文教程</title>
+    <link rel="stylesheet" href="styles.css">
+    <style></style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>KIRO IDE 教程</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-home">首页</a></li>
+                    <li><a href="module-10.html" class="nav-current">第10章</a></li>
+                    <li><a href="#introduction">介绍</a></li>
+                    <li><a href="#beginner">入门篇</a></li>
+                    <li><a href="#intermediate">基础篇</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <div class="breadcrumb-item"><a href="index.html">首页</a></div>
+                <div class="breadcrumb-item"><a href="#advanced">进阶篇</a></div>
+                <div class="breadcrumb-item active">第10章：Hooks与自动化</div>
+            </nav>
+
+            <!-- 进度指示器 -->
+            <div class="progress-indicator">
+                <div class="progress-step completed">
+                    <div class="progress-circle">8</div>
+                    <div class="progress-label">第8章</div>
+                </div>
+                <div class="progress-step completed">
+                    <div class="progress-circle">9</div>
+                    <div class="progress-label">第9章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">10</div>
+                    <div class="progress-label">第10章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">11</div>
+                    <div class="progress-label">第11章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">12</div>
+                    <div class="progress-label">第12章</div>
+                </div>
+            </div>
+
+            <!-- 侧边栏导航 -->
+            <aside class="sidebar">
+                <h3>本章导航</h3>
+                <ul class="sidebar-nav">
+                    <li><a href="#hooks-overview">钩子机制概述</a></li>
+                    <li><a href="#built-in-hooks">内置钩子类型</a></li>
+                    <li><a href="#custom-hooks">创建自定义钩子</a></li>
+                    <li><a href="#automation-workflows">自动化工作流</a></li>
+                    <li><a href="#event-triggers">事件触发器</a></li>
+                    <li><a href="#integration-examples">集成示例</a></li>
+                    <li><a href="#best-practices">最佳实践</a></li>
+                    <li><a href="#summary">总结</a></li>
+                </ul>
+
+                <h3>学习进度</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 80%"></div>
+                </div>
+                <p class="progress-text">第10章学习中</p>
+
+                <h3>快速操作</h3>
+                <button class="btn btn-secondary" onclick="updateLearningProgress('module-10', true)" style="width: 100%; margin-bottom: 0.5rem;">
+                    标记为已完成
+                </button>
+                <button class="btn" onclick="window.print()" style="width: 100%;">
+                    打印本章
+                </button>
+            </aside>
+
+            <div class="module-header">
+                <h1>第10章：Hooks与自动化</h1>
+                <p class="module-subtitle">钩子机制详解、自定义钩子创建和自动化工作流</p>
+            </div>
+
+            <div class="module-container">
+                <div class="module-objectives">
+                    <h3>学习目标</h3>
+                    <ul>
+                        <li>理解KIRO IDE中的钩子(Hooks)机制</li>
+                        <li>掌握内置钩子的类型和使用方法</li>
+                        <li>学会创建和使用自定义钩子</li>
+                        <li>掌握自动化工作流的创建和管理</li>
+                        <li>学会使用事件触发器</li>
+                        <li>了解钩子与自动化的最佳实践</li>
+                    </ul>
+                </div>
+
+                <div class="module-content">
+                    <h2>钩子机制概述</h2>
+                    <p>KIRO IDE的钩子(Hooks)机制是一种强大的扩展系统，允许您在IDE的特定事件点插入自定义代码，从而实现自动化和个性化功能。钩子使您能够监听和响应IDE中的各种事件，如文件保存、代码编辑、构建完成等。</p>
+
+                    <h3>什么是钩子</h3>
+                    <p>钩子是连接到IDE事件系统的回调函数，当特定事件发生时，这些函数会被自动执行。钩子机制类似于其他开发工具中的插件系统，但更加轻量级和易于集成。</p>
+
+                    <h3>钩子的工作原理</h3>
+                    <p>钩子系统通过以下方式工作：</p>
+                    <ol>
+                        <li><strong>事件注册</strong>：开发者注册钩子函数到特定事件点</li>
+                        <li><strong>事件监听</strong>：IDE监听内部事件的发生</li>
+                        <li><strong>钩子触发</strong>：当事件发生时，注册的钩子函数被调用</li>
+                        <li><strong>执行处理</strong>：钩子函数执行自定义逻辑</li>
+                        <li><strong>结果返回</strong>：钩子可以修改事件数据或执行副作用</li>
+                    </ol>
+
+                    <h3>钩子的优势</h3>
+                    <p>使用钩子机制有以下优势：</p>
+                    <ul>
+                        <li><strong>自动化</strong>：自动执行重复性任务，提高效率</li>
+                        <li><strong>个性化</strong>：根据个人需求定制IDE行为</li>
+                        <li><strong>扩展性</strong>：轻松添加新功能而无需修改核心代码</li>
+                        <li><strong>集成性</strong>：与外部工具和服务无缝集成</li>
+                        <li><strong>轻量级</strong>：相比传统插件，钩子更加轻量和高效</li>
+                    </ul>
+
+                    <h2>内置钩子类型</h2>
+                    <p>KIRO IDE提供了多种内置钩子类型，覆盖了开发过程中的各个阶段。了解这些钩子类型是创建有效自动化的基础。</p>
+
+                    <h3>文件系统钩子</h3>
+                    <p>文件系统钩子响应文件和目录的变化：</p>
+                    <ul>
+                        <li><strong>onFileCreate</strong>：当新文件创建时触发</li>
+                        <li><strong>onFileDelete</strong>：当文件被删除时触发</li>
+                        <li><strong>onFileRename</strong>：当文件被重命名时触发</li>
+                        <li><strong>onFileSave</strong>：当文件保存时触发</li>
+                        <li><strong>onDirectoryCreate</strong>：当新目录创建时触发</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <h3>文件保存钩子示例</h3>
+                        <div class="code-block">
+                            <code>// 自动格式化保存的JavaScript文件
+hooks.register('onFileSave', (event) => {
+  const { filePath, content } = event;
+  
+  if (filePath.endsWith('.js')) {
+    const formattedContent = formatJavaScript(content);
+    return { content: formattedContent };
+  }
+});</code>
+                        </div>
+                    </div>
+
+                    <h3>编辑器钩子</h3>
+                    <p>编辑器钩子响应代码编辑活动：</p>
+                    <ul>
+                        <li><strong>onTextChange</strong>：当编辑器内容变化时触发</li>
+                        <li><strong>onCursorMove</strong>：当光标位置改变时触发</li>
+                        <li><strong>onSelectionChange</strong>：当文本选择变化时触发</li>
+                        <li><strong>onEditorOpen</strong>：当编辑器打开文件时触发</li>
+                        <li><strong>onEditorClose</strong>：当编辑器关闭文件时触发</li>
+                    </ul>
+
+                    <h3>构建和测试钩子</h3>
+                    <p>构建和测试钩子响应开发过程中的构建和测试活动：</p>
+                    <ul>
+                        <li><strong>onBuildStart</strong>：当构建开始时触发</li>
+                        <li><strong>onBuildComplete</strong>：当构建完成时触发</li>
+                        <li><strong>onBuildError</strong>：当构建出错时触发</li>
+                        <li><strong>onTestStart</strong>：当测试开始时触发</li>
+                        <li><strong>onTestComplete</strong>：当测试完成时触发</li>
+                    </ul>
+
+                    <h3>版本控制钩子</h3>
+                    <p>版本控制钩子响应Git和其他版本控制系统的活动：</p>
+                    <ul>
+                        <li><strong>onCommit</strong>：当提交代码时触发</li>
+                        <li><strong>onPush</strong>：当推送代码时触发</li>
+                        <li><strong>onPull</strong>：当拉取代码时触发</li>
+                        <li><strong>onBranchCreate</strong>：当创建分支时触发</li>
+                        <li><strong>onMerge</strong>：当合并分支时触发</li>
+                    </ul>
+
+                    <h3>IDE生命周期钩子</h3>
+                    <p>IDE生命周期钩子响应IDE自身的状态变化：</p>
+                    <ul>
+                        <li><strong>onStartup</strong>：当IDE启动时触发</li>
+                        <li><strong>onShutdown</strong>：当IDE关闭时触发</li>
+                        <li><strong>onProjectOpen</strong>：当打开项目时触发</li>
+                        <li><strong>onProjectClose</strong>：当关闭项目时触发</li>
+                        <li><strong>onWorkspaceChange</strong>：当工作空间变化时触发</li>
+                    </ul>
+
+                    <h2>创建自定义钩子</h2>
+                    <p>除了使用内置钩子外，您还可以创建自定义钩子来满足特定需求。自定义钩子允许您封装复杂逻辑并在多个地方重用。</p>
+
+                    <h3>钩子定义语法</h3>
+                    <p>自定义钩子使用以下语法定义：</p>
+                    <div class="code-block">
+                        <code>// 定义自定义钩子
+hooks.define('customHookName', (options) => {
+  // 钩子逻辑
+  return result;
+});
+
+// 注册自定义钩子
+hooks.register('eventName', 'customHookName', options);</code>
+                    </div>
+
+                    <h3>创建代码生成钩子</h3>
+                    <p>以下是一个创建代码生成钩子的示例：</p>
+                    <div class="code-block">
+                        <code>// 定义组件生成钩子
+hooks.define('generateReactComponent', (options) => {
+  const { componentName, props, methods } = options;
+  
+  const template = `
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const ${componentName} = ({ ${props.join(', ')} }) => {
+  ${methods.map(method => method.toString()).join('\n  ')}
+  
+  return (
+    <div className="${componentName.toLowerCase()}">
+      {/* 组件内容 */}
+    </div>
+  );
+};
+
+${componentName}.propTypes = {
+  ${props.map(prop => `${prop}: PropTypes.isRequired`).join(',\n  ')}
+};
+
+export default ${componentName};
+`;
+  
+  return template;
+});
+
+// 注册到文件创建事件
+hooks.register('onFileCreate', (event) => {
+  const { filePath } = event;
+  
+  if (filePath.endsWith('.component.js')) {
+    const componentName = filePath.split('/').pop().replace('.component.js', '');
+    const props = ['data', 'onUpdate'];
+    const methods = [
+      function handleClick() { console.log('Clicked'); },
+      function handleSubmit() { console.log('Submitted'); }
+    ];
+    
+    const content = hooks.execute('generateReactComponent', {
+      componentName,
+      props,
+      methods
+    });
+    
+    return { content };
+  }
+});</code>
+                    </div>
+
+                    <h3>创建API集成钩子</h3>
+                    <p>以下是一个创建API集成钩子的示例：</p>
+                    <div class="code-block">
+                        <code>// 定义API通知钩子
+hooks.define('notifyAPIService', (options) => {
+  const { endpoint, data, method = 'POST' } = options;
+  
+  return fetch(endpoint, {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${process.env.API_TOKEN}`
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .catch(error => console.error('API notification failed:', error));
+});
+
+// 注册到文件保存事件
+hooks.register('onFileSave', async (event) => {
+  const { filePath, content } = event;
+  
+  // 只通知重要文件的更改
+  if (filePath.includes('src/') && !filePath.includes('.test.')) {
+    await hooks.execute('notifyAPIService', {
+      endpoint: 'https://api.example.com/notifications',
+      data: {
+        event: 'file_saved',
+        filePath,
+        timestamp: new Date().toISOString(),
+        author: 'KIRO IDE'
+      }
+    });
+  }
+});</code>
+                    </div>
+
+                    <h3>钩子链和组合</h3>
+                    <p>您可以将多个钩子组合成链，创建更复杂的自动化流程：</p>
+                    <div class="code-block">
+                        <code>// 创建钩子链
+hooks.chain('onFileSave')
+  .then('validateCode')
+  .then('formatCode')
+  .then('runTests')
+  .then('notifyTeam');
+
+// 或者使用组合钩子
+hooks.compose('onFileSave', [
+  'validateCode',
+  'formatCode',
+  'runTests',
+  'notifyTeam'
+]);</code>
+                    </div>
+
+                    <h2>自动化工作流</h2>
+                    <p>自动化工作流是一系列按预定顺序执行的钩子和操作，用于完成复杂的开发任务。KIRO IDE提供了直观的工作流编辑器，使您能够可视化地创建和管理这些工作流。</p>
+
+                    <h3>工作流编辑器</h3>
+                    <p>工作流编辑器是一个可视化工具，允许您通过拖放操作创建工作流：</p>
+                    <ol>
+                        <li>打开"工具"菜单，选择"工作流编辑器"</li>
+                        <li>点击"新建工作流"按钮</li>
+                        <li>从左侧面板拖动钩子到工作区</li>
+                        <li>连接钩子以定义执行顺序</li>
+                        <li>配置每个钩子的参数</li>
+                        <li>设置触发条件（事件、定时等）</li>
+                        <li>保存并命名工作流</li>
+                    </ol>
+
+                    <h3>常用工作流示例</h3>
+                    <p>以下是一些常用的自动化工作流示例：</p>
+
+                    <h4>代码质量检查工作流</h4>
+                    <div class="code-block">
+                        <code>触发器：onFileSave
+步骤：
+1. 检查文件语法
+2. 运行代码格式化
+3. 执行静态分析
+4. 运行单元测试
+5. 生成质量报告
+6. 如果发现问题，显示通知</code>
+                    </div>
+
+                    <h4>自动部署工作流</h4>
+                    <div class="code-block">
+                        <code>触发器：onCommit
+步骤：
+1. 构建项目
+2. 运行完整测试套件
+3. 创建Docker镜像
+4. 推送到镜像仓库
+5. 更新部署配置
+6. 部署到测试环境
+7. 运行烟雾测试
+8. 通知团队部署状态</code>
+                    </div>
+
+                    <h4>文档生成工作流</h4>
+                    <div class="code-block">
+                        <code>触发器：onPush (main分支)
+步骤：
+1. 提取代码注释
+2. 生成API文档
+3. 创建变更日志
+4. 构建文档网站
+5. 部署到文档服务器
+6. 更新索引</code>
+                    </div>
+
+                    <h3>工作流管理</h3>
+                    <p>您可以通过工作流管理器管理所有工作流：</p>
+                    <ul>
+                        <li><strong>启用/禁用</strong>：临时启用或禁用特定工作流</li>
+                        <li><strong>优先级设置</strong>：设置工作流执行优先级</li>
+                        <li><strong>执行历史</strong>：查看工作流执行历史和结果</li>
+                        <li><strong>调试模式</strong>：启用调试模式查看详细执行日志</li>
+                        <li><strong>导入/导出</strong>：导入和导出工作流配置</li>
+                    </ul>
+
+                    <h2>事件触发器</h2>
+                    <p>事件触发器是启动自动化工作流的机制。KIRO IDE支持多种类型的触发器，从简单的事件监听到复杂的定时和条件触发。</p>
+
+                    <h3>事件触发器</h3>
+                    <p>事件触发器响应IDE中的特定事件：</p>
+                    <ul>
+                        <li><strong>文件事件</strong>：文件创建、保存、删除等</li>
+                        <li><strong>编辑事件</strong>：文本变化、光标移动等</li>
+                        <li><strong>构建事件</strong>：构建开始、完成、失败等</li>
+                        <li><strong>测试事件</strong>：测试开始、完成、失败等</li>
+                        <li><strong>版本控制事件</strong>：提交、推送、合并等</li>
+                    </ul>
+
+                    <h3>定时触发器</h3>
+                    <p>定时触发器按预定时间间隔执行：</p>
+                    <ul>
+                        <li><strong>定时执行</strong>：每天/每周/每月的特定时间</li>
+                        <li><strong>间隔执行</strong>：每隔特定时间间隔执行</li>
+                        <li><strong>延迟执行</strong>：事件发生后延迟特定时间执行</li>
+                        <li><strong>cron表达式</strong>：使用cron表达式定义复杂时间规则</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <h3>定时触发器示例</h3>
+                        <div class="code-block">
+                            <code>// 每天早上9点检查依赖更新
+triggers.schedule('0 9 * * *', 'checkDependencies');
+
+// 每小时保存工作进度
+triggers.interval('1h', 'saveWorkProgress');
+
+// 文件保存后5分钟执行备份
+triggers.delay('onFileSave', '5m', 'createBackup');</code>
+                        </div>
+                    </div>
+
+                    <h3>条件触发器</h3>
+                    <p>条件触发器在满足特定条件时执行：</p>
+                    <ul>
+                        <li><strong>文件条件</strong>：基于文件路径、类型、大小等</li>
+                        <li><strong>内容条件</strong>：基于文件内容、代码模式等</li>
+                        <li><strong>项目条件</strong>：基于项目类型、配置等</li>
+                        <li><strong>环境条件</strong>：基于时间、系统状态等</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <h3>条件触发器示例</h3>
+                        <div class="code-block">
+                            <code>// 只对TypeScript文件执行格式化
+triggers.when('onFileSave', {
+  condition: (event) => event.filePath.endsWith('.ts'),
+  action: 'formatTypeScript'
+});
+
+// 在生产环境中跳过测试
+triggers.when('onBuildStart', {
+  condition: () => process.env.NODE_ENV === 'production',
+  action: 'skipTests'
+});
+
+// 只在主分支提交时执行部署
+triggers.when('onPush', {
+  condition: (event) => event.branch === 'main',
+  action: 'deployToProduction'
+});</code>
+                        </div>
+                    </div>
+
+                    <h2>集成示例</h2>
+                    <p>以下是一些将钩子与自动化集成到实际开发流程的示例。</p>
+
+                    <h3>前端开发自动化</h3>
+                    <p>针对前端开发的自动化流程：</p>
+                    <div class="code-block">
+                        <code>// 保存时自动格式化和检查前端代码
+hooks.register('onFileSave', (event) => {
+  const { filePath, content } = event;
+  
+  if (filePath.endsWith('.js') || filePath.endsWith('.jsx')) {
+    // 格式化代码
+    const formattedContent = prettier.format(content, {
+      parser: 'babel',
+      semi: true,
+      singleQuote: true,
+      tabWidth: 2
+    });
+    
+    // 检查代码质量
+    const lintResult = eslint.lintText(formattedContent);
+    
+    if (lintResult.errorCount > 0) {
+      // 显示错误通知
+      notifications.show('代码检查发现问题', 'error');
+    }
+    
+    return { content: formattedContent };
+  }
+});
+
+// 组件创建时自动生成测试文件
+hooks.register('onFileCreate', (event) => {
+  const { filePath } = event;
+  
+  if (filePath.endsWith('.component.jsx')) {
+    const componentName = filePath.split('/').pop().replace('.component.jsx', '');
+    const testFilePath = filePath.replace('.component.jsx', '.test.jsx');
+    
+    const testTemplate = `
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import ${componentName} from './${componentName}.component';
+
+describe('${componentName}', () => {
+  test('renders without crashing', () => {
+    render(<${componentName} />);
+  });
+});
+`;
+    
+    fs.writeFileSync(testFilePath, testTemplate);
+    notifications.show(`已创建测试文件: ${testFilePath}`, 'success');
+  }
+});</code>
+                    </div>
+
+                    <h3>后端开发自动化</h3>
+                    <p>针对后端开发的自动化流程：</p>
+                    <div class="code-block">
+                        <code>// API文件保存时自动更新文档
+hooks.register('onFileSave', async (event) => {
+  const { filePath, content } = event;
+  
+  if (filePath.includes('/api/') && filePath.endsWith('.js')) {
+    // 提取API端点信息
+    const apiEndpoints = extractApiEndpoints(content);
+    
+    // 更新API文档
+    await updateApiDocumentation(apiEndpoints);
+    
+    // 通知团队API文档已更新
+    await notifyTeam('API文档已更新', {
+      file: filePath,
+      endpoints: apiEndpoints.length
+    });
+  }
+});
+
+// 数据库模型更改时自动生成迁移
+hooks.register('onFileSave', (event) => {
+  const { filePath, content } = event;
+  
+  if (filePath.endsWith('.model.js')) {
+    // 解析模型变化
+    const modelChanges = detectModelChanges(content);
+    
+    if (modelChanges.length > 0) {
+      // 生成迁移文件
+      const migrationFile = generateMigration(modelChanges);
+      
+      notifications.show(`已生成迁移文件: ${migrationFile}`, 'info');
+    }
+  }
+});</code>
+                    </div>
+
+                    <h3>团队协作自动化</h3>
+                    <p>针对团队协作的自动化流程：</p>
+                    <div class="code-block">
+                        <code>// 代码提交时自动执行团队规范检查
+hooks.register('onCommit', (event) => {
+  const { files, message } = event;
+  
+  // 检查提交消息格式
+  if (!isValidCommitMessage(message)) {
+    throw new Error('提交消息格式不符合团队规范');
+  }
+  
+  // 检查文件大小限制
+  const largeFiles = files.filter(file => file.size > 1024 * 1024); // 1MB
+  if (largeFiles.length > 0) {
+    notifications.show('警告：提交包含大文件', 'warning');
+  }
+  
+  // 自动添加代码审查者
+  if (message.includes('[review]')) {
+    const reviewers = selectReviewers(files);
+    addReviewersToPullRequest(reviewers);
+  }
+});
+
+// 合并请求时自动更新项目状态
+hooks.register('onMerge', async (event) => {
+  const { branch, prNumber } = event;
+  
+  // 更新项目看板
+  await updateProjectBoard(branch, prNumber);
+  
+  // 发布版本（如果是主分支）
+  if (branch === 'main') {
+    const version = await getNextVersion();
+    await releaseVersion(version);
+    
+    // 通知团队新版本发布
+    await notifyTeam(`版本 ${version} 已发布`, {
+      branch,
+      prNumber,
+      timestamp: new Date().toISOString()
+    });
+  }
+});</code>
+                    </div>
+
+                    <h2>最佳实践</h2>
+                    <p>在使用钩子和自动化时，遵循以下最佳实践可以帮助您创建更高效、更可靠的自动化流程。</p>
+
+                    <h3>钩子设计原则</h3>
+                    <ul>
+                        <li><strong>单一职责</strong>：每个钩子只负责一个特定功能</li>
+                        <li><strong>幂等性</strong>：钩子应该可以安全地多次执行</li>
+                        <li><strong>错误处理</strong>：妥善处理错误，避免中断整个流程</li>
+                        <li><strong>性能考虑</strong>：避免在钩子中执行耗时操作</li>
+                        <li><strong>可测试性</strong>：设计钩子时考虑测试的便利性</li>
+                    </ul>
+
+                    <h3>工作流设计原则</h3>
+                    <ul>
+                        <li><strong>模块化</strong>：将复杂工作流分解为小的、可重用的模块</li>
+                        <li><strong>可观测性</strong>：添加适当的日志和监控</li>
+                        <li><strong>可恢复性</strong>：设计工作流以支持从失败点恢复</li>
+                        <li><strong>可配置性</strong>：使工作流参数可配置，提高灵活性</li>
+                        <li><strong>文档化</strong>：为工作流提供清晰的文档说明</li>
+                    </ul>
+
+                    <h3>性能优化</h3>
+                    <ul>
+                        <li><strong>条件执行</strong>：使用条件触发器避免不必要的执行</li>
+                        <li><strong>异步操作</strong>：对于耗时操作使用异步模式</li>
+                        <li><strong>批量处理</strong>：将多个小操作合并为批量操作</li>
+                        <li><strong>缓存结果</strong>：缓存计算结果避免重复计算</li>
+                        <li><strong>资源管理</strong>：合理管理系统资源，避免资源泄漏</li>
+                    </ul>
+
+                    <h3>安全考虑</h3>
+                    <ul>
+                        <li><strong>权限控制</strong>：限制钩子的系统访问权限</li>
+                        <li><strong>输入验证</strong>：验证钩子输入，防止注入攻击</li>
+                        <li><strong>敏感信息</strong>：避免在钩子中硬编码敏感信息</li>
+                        <li><strong>审计日志</strong>：记录钩子执行日志以便审计</li>
+                        <li><strong>代码审查</strong>：对自定义钩子进行代码审查</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <h3>小贴士</h3>
+                        <p>从简单的钩子开始，逐步构建更复杂的自动化流程。定期评估和优化您的钩子和工作流，确保它们仍然满足您的需求。与团队成员分享有用的钩子，共同提高团队效率。</p>
+                    </div>
+
+                    <h2>总结</h2>
+                    <p>通过本章的学习，您已经掌握了KIRO IDE的钩子机制和自动化功能。您了解了如何使用内置钩子、创建自定义钩子、构建自动化工作流以及设置事件触发器。这些工具将帮助您自动化重复性任务，提高开发效率，并确保代码质量和一致性。</p>
+
+                    <p>在下一章中，我们将学习KIRO的项目管理与协作功能，探索如何通过Steering功能和MCP上下文协议提高团队协作效率。</p>
+                </div>
+
+                <div class="module-nav">
+                    <div class="nav-prev">
+                        <a href="module-9.html" class="btn">← 第9章：Chat高级功能</a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="module-11.html" class="btn">第11章：项目管理与协作 →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KIRO IDE 中文教程. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

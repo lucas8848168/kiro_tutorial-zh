@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试core.js</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .pass {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .fail {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>core.js类测试</h1>
+    <div id="results"></div>
+    <button onclick="runTests()">运行测试</button>
+
+    <!-- 加载core.js -->
+    <script src="src/core.js"></script>
+
+    <script>
+        function runTests() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            const tests = [
+                {
+                    name: 'CodeDemoManager存在',
+                    test: () => typeof CodeDemoManager !== 'undefined'
+                },
+                {
+                    name: 'CodeDemoManager可实例化',
+                    test: () => {
+                        try {
+                            new CodeDemoManager();
+                            return true;
+                        } catch (e) {
+                            return false;
+                        }
+                    }
+                },
+                {
+                    name: 'LearningProgressManager存在',
+                    test: () => typeof LearningProgressManager !== 'undefined'
+                },
+                {
+                    name: 'LearningProgressManager可实例化',
+                    test: () => {
+                        try {
+                            new LearningProgressManager();
+                            return true;
+                        } catch (e) {
+                            return false;
+                        }
+                    }
+                },
+                {
+                    name: 'BookmarkManager存在',
+                    test: () => typeof BookmarkManager !== 'undefined'
+                },
+                {
+                    name: 'BookmarkManager可实例化',
+                    test: () => {
+                        try {
+                            new BookmarkManager();
+                            return true;
+                        } catch (e) {
+                            return false;
+                        }
+                    }
+                }
+            ];
+
+            tests.forEach(test => {
+                const result = document.createElement('div');
+                result.className = 'test-result';
+                
+                try {
+                    const passed = test.test();
+                    result.className += passed ? ' pass' : ' fail';
+                    result.innerHTML = `${passed ? '✅' : '❌'} ${test.name}`;
+                } catch (e) {
+                    result.className += ' fail';
+                    result.innerHTML = `❌ ${test.name} - 错误: ${e.message}`;
+                }
+                
+                resultsDiv.appendChild(result);
+            });
+        }
+
+        // 页面加载完成后自动运行测试
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>

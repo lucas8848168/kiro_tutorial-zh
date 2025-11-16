@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第11章：项目管理与协作 - KIRO IDE 中文教程</title>
+    <link rel="stylesheet" href="styles.css">
+    <style></style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>KIRO IDE 教程</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-home">首页</a></li>
+                    <li><a href="module-11.html" class="nav-current">第11章</a></li>
+                    <li><a href="#introduction">介绍</a></li>
+                    <li><a href="#beginner">入门篇</a></li>
+                    <li><a href="#intermediate">基础篇</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <div class="breadcrumb-item"><a href="index.html">首页</a></div>
+                <div class="breadcrumb-item"><a href="#advanced">进阶篇</a></div>
+                <div class="breadcrumb-item active">第11章：项目管理与协作</div>
+            </nav>
+
+            <!-- 进度指示器 -->
+            <div class="progress-indicator">
+                <div class="progress-step completed">
+                    <div class="progress-circle">8</div>
+                    <div class="progress-label">第8章</div>
+                </div>
+                <div class="progress-step completed">
+                    <div class="progress-circle">9</div>
+                    <div class="progress-label">第9章</div>
+                </div>
+                <div class="progress-step completed">
+                    <div class="progress-circle">10</div>
+                    <div class="progress-label">第10章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">11</div>
+                    <div class="progress-label">第11章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">12</div>
+                    <div class="progress-label">第12章</div>
+                </div>
+            </div>
+
+            <!-- 侧边栏导航 -->
+            <aside class="sidebar">
+                <h3>本章导航</h3>
+                <ul class="sidebar-nav">
+                    <li><a href="#steering-overview">Steering功能概述</a></li>
+                    <li><a href="#mcp-protocol">MCP上下文协议</a></li>
+                    <li><a href="#team-collaboration">团队协作功能</a></li>
+                    <li><a href="#project-management">项目管理工具</a></li>
+                    <li><a href="#code-review">代码审查流程</a></li>
+                    <li><a href="#integration-setup">集成设置</a></li>
+                    <li><a href="#best-practices">最佳实践</a></li>
+                    <li><a href="#summary">总结</a></li>
+                </ul>
+
+                <h3>学习进度</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 85%"></div>
+                </div>
+                <p class="progress-text">第11章学习中</p>
+
+                <h3>快速操作</h3>
+                <button class="btn btn-secondary" onclick="updateLearningProgress('module-11', true)" style="width: 100%; margin-bottom: 0.5rem;">
+                    标记为已完成
+                </button>
+                <button class="btn" onclick="window.print()" style="width: 100%;">
+                    打印本章
+                </button>
+            </aside>
+
+            <div class="module-header">
+                <h1>第11章：项目管理与协作</h1>
+                <p class="module-subtitle">Steering功能、MCP上下文协议和团队协作工具</p>
+            </div>
+
+            <div class="module-container">
+                <div class="module-objectives">
+                    <h3>学习目标</h3>
+                    <ul>
+                        <li>掌握KIRO IDE的Steering功能使用</li>
+                        <li>理解MCP上下文协议的工作原理</li>
+                        <li>学会设置和管理团队协作环境</li>
+                        <li>掌握项目管理工具的使用</li>
+                        <li>了解代码审查流程和最佳实践</li>
+                        <li>学会配置第三方服务集成</li>
+                    </ul>
+                </div>
+
+                <div class="module-content">
+                    <h2>Steering功能概述</h2>
+                    <p>KIRO IDE的Steering功能是一种高级项目管理工具，它通过智能上下文管理和任务引导，帮助开发团队更高效地协作和管理复杂项目。Steering结合了AI辅助、任务跟踪和知识管理，为团队提供全方位的项目支持。</p>
+
+                    <h3>Steering的核心概念</h3>
+                    <p>Steering基于以下几个核心概念：</p>
+                    <ul>
+                        <li><strong>上下文感知</strong>：自动理解项目结构和代码上下文</li>
+                        <li><strong>任务引导</strong>：基于项目状态提供智能任务建议</li>
+                        <li><strong>知识图谱</strong>：构建项目知识网络，便于信息检索</li>
+                        <li><strong>协作增强</strong>：促进团队成员间的信息共享和协作</li>
+                        <li><strong>进度可视化</strong>：提供直观的项目进度和状态展示</li>
+                    </ul>
+
+                    <h3>Steering界面介绍</h3>
+                    <p>Steering界面包含以下几个主要部分：</p>
+                    <ol>
+                        <li><strong>项目仪表板</strong>：显示项目概览、关键指标和近期活动</li>
+                        <li><strong>任务管理器</strong>：创建、分配和跟踪项目任务</li>
+                        <li><strong>知识库</strong>：存储和组织项目相关文档和知识</li>
+                        <li><strong>团队视图</strong>：展示团队成员及其当前工作状态</li>
+                        <li><strong>上下文面板</strong>：显示当前代码和文件的智能上下文</li>
+                    </ol>
+
+                    <h3>启用Steering功能</h3>
+                    <p>要启用Steering功能，请按照以下步骤操作：</p>
+                    <ol>
+                        <li>打开KIRO IDE设置（<code>Cmd/Ctrl + ,</code>）</li>
+                        <li>导航到"扩展"或"实验性功能"部分</li>
+                        <li>找到"Steering"选项并启用</li>
+                        <li>重启IDE以应用更改</li>
+                        <li>从侧边栏或命令面板（<code>Cmd/Ctrl + Shift + P</code>）打开Steering面板</li>
+                    </ol>
+
+                    <h3>Steering工作流程</h3>
+                    <p>Steering的工作流程通常包括以下步骤：</p>
+                    <ol>
+                        <li><strong>项目初始化</strong>：Steering分析项目结构，建立初始上下文</li>
+                        <li><strong>任务定义</strong>：团队定义项目目标和任务</li>
+                        <li><strong>上下文构建</strong>：Steering持续学习和更新项目上下文</li>
+                        <li><strong>智能引导</strong>：基于上下文提供任务建议和解决方案</li>
+                        <li><strong>协作支持</strong>：促进团队成员间的信息共享和协作</li>
+                        <li><strong>进度跟踪</strong>：监控项目进度和团队效率</li>
+                    </ol>
+
+                    <h3>Steering实践示例</h3>
+                    <div class="example-box">
+                        <h3>使用Steering进行项目规划</h3>
+                        <div class="code-block">
+                            <code>// 通过Steering API创建项目任务
+const steering = kiro.steering;
+
+// 创建新项目
+const project = await steering.createProject({
+  name: "电商网站重构",
+  description: "将现有电商网站从React迁移到Vue 3",
+  startDate: new Date('2025-02-01'),
+  endDate: new Date('2025-04-30'),
+  team: ['alice', 'bob', 'charlie']
+});
+
+// 添加主要任务
+const tasks = await steering.addTasks(project.id, [
+  {
+    title: "需求分析和技术选型",
+    description: "分析现有功能，确定Vue 3迁移策略",
+    priority: "high",
+    assignee: "alice",
+    estimatedHours: 40,
+    dependencies: []
+  },
+  {
+    title: "组件库设计和实现",
+    description: "设计和实现可复用的Vue组件库",
+    priority: "high",
+    assignee: "bob",
+    estimatedHours: 80,
+    dependencies: ["需求分析和技术选型"]
+  },
+  {
+    title: "核心功能迁移",
+    description: "迁移购物车、结账等核心功能",
+    priority: "high",
+    assignee: "charlie",
+    estimatedHours: 120,
+    dependencies: ["组件库设计和实现"]
+  }
+]);
+
+// 获取Steering建议
+const suggestions = await steering.getSuggestions(project.id);
+console.log("Steering建议:", suggestions);</code>
+                        </div>
+                    </div>
+
+                    <h2>MCP上下文协议</h2>
+                    <p>MCP（Model Context Protocol）是KIRO IDE中的一种高级上下文管理协议，它允许不同组件和服务之间共享和同步上下文信息。MCP为团队协作和工具集成提供了强大的基础设施。</p>
+
+                    <h3>MCP协议概述</h3>
+                    <p>MCP协议解决了多工具环境中的上下文碎片化问题，它提供了一种标准化的方式来：</p>
+                    <ul>
+                        <li><strong>捕获上下文</strong>：从各种来源捕获和收集上下文信息</li>
+                        <li><strong>表示上下文</strong>：使用统一格式表示不同类型的上下文</li>
+                        <li><strong>传输上下文</strong>：在不同组件和服务间传输上下文</li>
+                        <li><strong>同步上下文</strong>：确保上下文在多个位置保持同步</li>
+                        <li><strong>查询上下文</strong>：提供强大的上下文查询和检索功能</li>
+                    </ul>
+
+                    <h3>MCP上下文类型</h3>
+                    <p>MCP支持多种上下文类型，包括：</p>
+                    <ul>
+                        <li><strong>代码上下文</strong>：当前文件、函数、类等代码结构</li>
+                        <li><strong>项目上下文</strong>：项目结构、依赖关系、配置等</li>
+                        <li><strong>任务上下文</strong>：当前任务、目标、进度等</li>
+                        <li><strong>团队上下文</strong>：团队成员、角色、权限等</li>
+                        <li><strong>历史上下文</strong>：过去的操作、决策、变更等</li>
+                        <li><strong>会话上下文</strong>：聊天历史、问答记录等</li>
+                    </ul>
+
+                    <h3>MCP协议架构</h3>
+                    <p>MCP协议采用分层架构，包含以下组件：</p>
+                    <ol>
+                        <li><strong>上下文提供者</strong>：负责收集和生成上下文信息</li>
+                        <li><strong>上下文存储</strong>：持久化存储上下文数据</li>
+                        <li><strong>上下文管理器</strong>：协调上下文的创建、更新和查询</li>
+                        <li><strong>上下文消费者</strong>：使用上下文信息的应用和服务</li>
+                        <li><strong>同步引擎</strong>：确保上下文在不同位置保持一致</li>
+                    </ol>
+
+                    <h3>使用MCP API</h3>
+                    <p>您可以通过MCP API访问和管理上下文信息：</p>
+                    <div class="code-block">
+                        <code>// 获取当前代码上下文
+const codeContext = await kiro.mcp.getContext('code', {
+  include: ['file', 'function', 'class', 'imports'],
+  depth: 2
+});
+
+// 获取项目上下文
+const projectContext = await kiro.mcp.getContext('project', {
+  include: ['structure', 'dependencies', 'configuration']
+});
+
+// 创建自定义上下文
+const customContext = await kiro.mcp.createContext('feature', {
+  name: 'user-authentication',
+  files: ['auth.js', 'login.vue', 'register.vue'],
+  status: 'in-progress',
+  assignee: 'alice'
+});
+
+// 订阅上下文变更
+kiro.mcp.subscribe('code', (context) => {
+  console.log('代码上下文已更新:', context);
+});
+
+// 查询上下文
+const searchResults = await kiro.mcp.query({
+  type: 'code',
+  filter: {
+    language: 'javascript',
+    hasTests: true,
+    modifiedAfter: '2025-01-01'
+  }
+});</code>
+                    </div>
+
+                    <h3>MCP集成示例</h3>
+                    <div class="example-box">
+                        <h3>使用MCP增强代码审查</h3>
+                        <div class="code-block">
+                            <code>// 创建代码审查上下文
+const reviewContext = await kiro.mcp.createContext('code-review', {
+  pullRequestId: '#123',
+  reviewer: 'bob',
+  files: ['user-service.js', 'user-controller.js'],
+  deadline: '2025-02-15'
+});
+
+// 关联相关上下文
+await kiro.mcp.associate(reviewContext.id, [
+  { type: 'code', id: 'user-service.js' },
+  { type: 'task', id: 'implement-user-auth' },
+  { type: 'team', id: 'backend-team' }
+]);
+
+// 设置上下文规则
+await kiro.mcp.setRule(reviewContext.id, {
+  name: 'security-check',
+  condition: 'file.includes("auth")',
+  action: 'highlight-security-concerns'
+});
+
+// 获取智能建议
+const suggestions = await kiro.mcp.getSuggestions(reviewContext.id, {
+  type: 'security',
+  priority: 'high'
+});</code>
+                        </div>
+                    </div>
+
+                    <h2>团队协作功能</h2>
+                    <p>KIRO IDE提供了一系列强大的团队协作功能，使开发团队能够更高效地协同工作。这些功能与Steering和MCP协议深度集成，为团队提供无缝的协作体验。</p>
+
+                    <h3>实时协作</h3>
+                    <p>KIRO IDE支持实时协作，允许多个开发者同时编辑同一项目：</p>
+                    <ul>
+                        <li><strong>实时编辑</strong>：多人同时编辑同一文件，实时查看更改</li>
+                        <li><strong>冲突解决</strong>：智能检测和解决编辑冲突</li>
+                        <li><strong>光标共享</strong>：查看团队成员的光标位置和选择范围</li>
+                        <li><strong>语音聊天</strong>：内置语音聊天功能，便于即时沟通</li>
+                        <li><strong>屏幕共享</strong>：共享屏幕，便于演示和问题解决</li>
+                    </ul>
+
+                    <h3>代码共享与评审</h3>
+                    <p>代码共享和评审功能帮助团队维护代码质量：</p>
+                    <ul>
+                        <li><strong>代码片段共享</strong>：快速分享代码片段，获取反馈</li>
+                        <li><strong>内置代码评审</strong>：直接在IDE中进行代码评审</li>
+                        <li><strong>差异视图</strong>：直观显示代码变更和差异</li>
+                        <li><strong>评论系统</strong>：在代码行上添加评论和讨论</li>
+                        <li><strong>建议模式</strong>：提出代码修改建议，供作者采纳</li>
+                    </ul>
+
+                    <h3>团队知识管理</h3>
+                    <p>团队知识管理功能帮助积累和共享项目知识：</p>
+                    <ul>
+                        <li><strong>团队Wiki</strong>：创建和维护项目文档和知识库</li>
+                        <li><strong>代码注释增强</strong>：将代码注释转化为可搜索的知识</li>
+                        <li><strong>决策记录</strong>：记录重要技术决策和理由</li>
+                        <li><strong>最佳实践库</strong>：收集和分享团队最佳实践</li>
+                        <li><strong>常见问题解答</strong>：维护项目常见问题和解决方案</li>
+                    </ul>
+
+                    <h3>设置团队协作环境</h3>
+                    <p>要设置团队协作环境，请按照以下步骤操作：</p>
+                    <ol>
+                        <li>打开KIRO IDE的团队设置（<code>Cmd/Ctrl + Shift + P</code>，输入"团队设置"）</li>
+                        <li>创建或加入团队工作空间</li>
+                        <li>邀请团队成员加入工作空间</li>
+                        <li>配置项目权限和访问控制</li>
+                        <li>设置协作规则和工作流程</li>
+                        <li>配置通知和提醒设置</li>
+                    </ol>
+
+                    <h3>团队协作最佳实践</h3>
+                    <div class="tip-box">
+                        <h3>提高团队协作效率的技巧</h3>
+                        <ul>
+                            <li>建立清晰的代码规范和提交规范</li>
+                            <li>定期进行代码审查和知识分享</li>
+                            <li>使用标签和里程碑组织任务和问题</li>
+                            <li>保持文档更新，记录重要决策</li>
+                            <li>定期回顾和改进协作流程</li>
+                        </ul>
+                    </div>
+
+                    <h2>项目管理工具</h2>
+                    <p>KIRO IDE集成了强大的项目管理工具，帮助团队规划、执行和跟踪项目进度。这些工具与Steering功能深度集成，提供全方位的项目管理支持。</p>
+
+                    <h3>任务管理</h3>
+                    <p>任务管理功能帮助团队组织和跟踪工作：</p>
+                    <ul>
+                        <li><strong>任务创建</strong>：创建详细任务，包括描述、优先级和截止日期</li>
+                        <li><strong>任务分配</strong>：将任务分配给合适的团队成员</li>
+                        <li><strong>任务依赖</strong>：设置任务间的依赖关系，确保正确执行顺序</li>
+                        <li><strong>时间跟踪</strong>：记录任务花费的时间，分析效率</li>
+                        <li><strong>任务状态</strong>：跟踪任务状态（待办、进行中、已完成等）</li>
+                    </ul>
+
+                    <h3>里程碑和版本管理</h3>
+                    <p>里程碑和版本管理功能帮助团队规划发布：</p>
+                    <ul>
+                        <li><strong>里程碑创建</strong>：定义项目里程碑和关键节点</li>
+                        <li><strong>版本规划</strong>：规划版本功能和发布时间</li>
+                        <li><strong>发布管理</strong>：管理发布流程和发布说明</li>
+                        <li><strong>路线图</strong>：可视化展示项目路线图和进度</li>
+                        <li><strong>变更日志</strong>：自动生成版本变更日志</li>
+                    </ul>
+
+                    <h3>资源管理</h3>
+                    <p>资源管理功能帮助优化团队资源分配：</p>
+                    <ul>
+                        <li><strong>工作负载分析</strong>：分析团队成员工作负载</li>
+                        <li><strong>技能映射</strong>：映射团队成员技能和任务需求</li>
+                        <li><strong>资源分配</strong>：优化资源分配，避免瓶颈</li>
+                        <li><strong>时间线规划</strong>：创建详细项目时间线</li>
+                        <li><strong>瓶颈识别</strong>：识别和解决项目瓶颈</li>
+                    </ul>
+
+                    <h3>项目仪表板</h3>
+                    <p>项目仪表板提供项目状态的可视化概览：</p>
+                    <ul>
+                        <li><strong>进度图表</strong>：显示项目整体进度和各模块进度</li>
+                        <li><strong>活动时间线</strong>：展示近期项目活动和变更</li>
+                        <li><strong>关键指标</strong>：显示代码质量、测试覆盖率等关键指标</li>
+                        <li><strong>团队状态</strong>：展示团队成员当前状态和工作负载</li>
+                        <li><strong>风险和问题</strong>：突出显示项目风险和待解决问题</li>
+                    </ul>
+
+                    <h3>使用项目管理API</h3>
+                    <div class="code-block">
+                        <code>// 创建项目
+const project = await kiro.project.create({
+  name: "移动应用开发",
+  description: "开发跨平台移动应用",
+  startDate: "2025-02-01",
+  endDate: "2025-06-30",
+  team: ["alice", "bob", "charlie", "diana"]
+});
+
+// 创建里程碑
+const milestone = await kiro.project.createMilestone(project.id, {
+  name: "MVP版本",
+  description: "最小可行产品版本",
+  dueDate: "2025-04-15",
+  tasks: []
+});
+
+// 创建任务
+const task = await kiro.project.createTask(project.id, {
+  title: "用户认证模块",
+  description: "实现用户注册、登录和密码重置功能",
+  assignee: "alice",
+  priority: "high",
+  estimatedHours: 40,
+  milestone: milestone.id,
+  tags: ["authentication", "security"]
+});
+
+// 更新任务状态
+await kiro.project.updateTask(task.id, {
+  status: "in-progress",
+  progress: 25,
+  actualHours: 10
+});
+
+// 获取项目仪表板数据
+const dashboard = await kiro.project.getDashboard(project.id);
+console.log("项目仪表板:", dashboard);</code>
+                    </div>
+
+                    <h2>代码审查流程</h2>
+                    <p>代码审查是确保代码质量和团队知识共享的重要实践。KIRO IDE提供了集成的代码审查工具，使团队能够高效地进行代码审查。</p>
+
+                    <h3>代码审查工作流</h3>
+                    <p>典型的代码审查工作流包括以下步骤：</p>
+                    <ol>
+                        <li><strong>创建审查请求</strong>：开发者提交代码并请求审查</li>
+                        <li><strong>分配审查者</strong>：自动或手动分配合适的审查者</li>
+                        <li><strong>进行审查</strong>：审查者检查代码并提供反馈</li>
+                        <li><strong>讨论和修改</strong>：作者和审查者讨论问题并进行修改</li>
+                        <li><strong>批准或拒绝</strong>：审查者批准或拒绝代码变更</li>
+                        <li><strong>合并代码</strong>：批准后代码被合并到主分支</li>
+                    </ol>
+
+                    <h3>审查工具</h3>
+                    <p>KIRO IDE提供了丰富的代码审查工具：</p>
+                    <ul>
+                        <li><strong>差异视图</strong>：直观显示代码变更</li>
+                        <li><strong>行内评论</li>
+                        <li><strong>建议模式</strong>：直接提出代码修改建议</li>
+                        <li><strong>问题标记</strong>：标记代码中的问题和疑虑</li>
+                        <li><strong>审查模板</strong>：使用标准化审查模板</li>
+                    </ul>
+
+                    <h3>自动化审查</h3>
+                    <p>自动化审查工具提高审查效率：</p>
+                    <ul>
+                        <li><strong>代码风格检查</strong>：自动检查代码风格一致性</li>
+                        <li><strong>静态分析</strong>：运行静态分析工具检查潜在问题</li>
+                        <li><strong>测试覆盖率</strong>：检查测试覆盖率是否达标</li>
+                        <li><strong>安全扫描</strong>：扫描代码中的安全漏洞</li>
+                        <li><strong>性能分析</strong>：分析代码性能影响</li>
+                    </ul>
+
+                    <h3>审查最佳实践</h3>
+                    <div class="tip-box">
+                        <h3>提高代码审查效果的技巧</h3>
+                        <ul>
+                            <li>保持审查范围小而专注，便于深入审查</li>
+                            <li>提供建设性反馈，关注代码而非个人</li>
+                            <li>使用检查清单确保审查全面性</li>
+                            <li>及时处理审查请求，避免延迟</li>
+                            <li>定期回顾和改进审查流程</li>
+                        </ul>
+                    </div>
+
+                    <h3>代码审查API示例</h3>
+                    <div class="code-block">
+                        <code>// 创建代码审查
+const review = await kiro.review.create({
+  title: "添加用户认证功能",
+  description: "实现了用户注册、登录和JWT认证",
+  author: "alice",
+  reviewers: ["bob", "charlie"],
+  changeset: "commit-hash-123",
+  branch: "feature/user-auth",
+  targetBranch: "main"
+});
+
+// 添加审查评论
+await kiro.review.addComment(review.id, {
+  file: "auth.js",
+  line: 45,
+  content: "建议使用更安全的密码哈希算法，如bcrypt",
+  type: "suggestion",
+  severity: "medium"
+});
+
+// 添加代码建议
+await kiro.review.addSuggestion(review.id, {
+  file: "auth.js",
+  line: 45,
+  originalCode: "hash = md5(password);",
+  suggestedCode: "hash = bcrypt.hash(password, saltRounds);",
+  description: "使用bcrypt替代md5提高安全性"
+});
+
+// 批准审查
+await kiro.review.approve(review.id, {
+  reviewer: "bob",
+  comments: "代码质量良好，安全建议已采纳"
+});
+
+// 合并代码
+await kiro.review.merge(review.id, {
+  mergeMethod: "squash",
+  commitMessage: "feat: 添加用户认证功能 (#123)"
+});</code>
+                    </div>
+
+                    <h2>集成设置</h2>
+                    <p>KIRO IDE支持与多种第三方工具和服务集成，扩展其功能并适应不同的开发工作流程。这些集成包括版本控制系统、项目管理工具、CI/CD平台等。</p>
+
+                    <h3>版本控制集成</h3>
+                    <p>KIRO IDE与主流版本控制系统深度集成：</p>
+                    <ul>
+                        <li><strong>Git集成</strong>：完整的Git支持，包括分支、合并、变基等</li>
+                        <li><strong>GitHub集成</strong>：直接与GitHub仓库交互，管理PR和Issues</li>
+                        <li><strong>GitLab集成</strong>：支持GitLab CI/CD和合并请求</li>
+                        <li><strong>Bitbucket集成</strong>：与Bitbucket仓库和拉取请求集成</li>
+                        <li><strong>SVN支持</strong>：支持Subversion版本控制系统</li>
+                    </ul>
+
+                    <h3>项目管理工具集成</h3>
+                    <p>与流行项目管理工具集成，统一工作流程：</p>
+                    <ul>
+                        <li><strong>Jira集成</strong>：与Jira问题跟踪系统同步</li>
+                        <li><strong>Trello集成</strong>：与Trello看板同步任务状态</li>
+                        <li><strong>Asana集成</strong>：与Asana项目管理平台集成</li>
+                        <li><strong>Monday.com集成</strong>：与Monday.com工作操作系统集成</li>
+                        <li><strong>ClickUp集成</strong>：与ClickUp任务管理平台集成</li>
+                    </ul>
+
+                    <h3>CI/CD集成</h3>
+                    <p>与持续集成和部署平台集成，自动化开发流程：</p>
+                    <ul>
+                        <li><strong>Jenkins集成</strong>：触发和监控Jenkins构建</li>
+                        <li><strong>GitHub Actions集成</strong>：管理和触发GitHub Actions工作流</li>
+                        <li><strong>GitLab CI集成</strong>：与GitLab CI/CD流水线集成</li>
+                        <li><strong>Azure DevOps集成</strong>：与Azure DevOps管道集成</li>
+                        <li><strong>CircleCI集成</strong>：与CircleCI构建和部署流程集成</li>
+                    </ul>
+
+                    <h3>通信工具集成</h3>
+                    <p>与团队通信工具集成，提高协作效率：</p>
+                    <ul>
+                        <li><strong>Slack集成</strong>：发送通知和更新到Slack频道</li>
+                        <li><strong>Microsoft Teams集成</strong>：与Teams频道和聊天集成</li>
+                        <li><strong>Discord集成</strong>：与Discord服务器和频道集成</li>
+                        <li><strong>邮件通知</strong>：发送重要事件和更新的邮件通知</li>
+                        <li><strong>Webhook支持</strong>：支持自定义webhook集成</li>
+                    </ul>
+
+                    <h3>配置集成</h3>
+                    <p>要配置第三方集成，请按照以下步骤操作：</p>
+                    <ol>
+                        <li>打开KIRO IDE设置（<code>Cmd/Ctrl + ,</code>）</li>
+                        <li>导航到"集成"或"扩展"部分</li>
+                        <li>选择要集成的服务</li>
+                        <li>按照向导完成身份验证和授权</li>
+                        <li>配置集成选项和通知设置</li>
+                        <li>测试集成是否正常工作</li>
+                    </ol>
+
+                    <h3>集成API示例</h3>
+                    <div class="code-block">
+                        <code>// 配置GitHub集成
+await kiro.integrations.configure('github', {
+  token: 'ghp_xxxxxxxxxxxxxxxxxxxx',
+  defaultRepo: 'my-org/my-repo',
+  autoSync: true,
+  syncInterval: '5m'
+});
+
+// 配置Jira集成
+await kiro.integrations.configure('jira', {
+  url: 'https://mycompany.atlassian.net',
+  username: 'my-username',
+  apiToken: 'my-api-token',
+  projectKey: 'PROJ',
+  autoLinkCommits: true
+});
+
+// 配置Slack集成
+await kiro.integrations.configure('slack', {
+  botToken: 'xoxb-xxxxxxxxxxxx-xxxxxxxxxxxx-xxxxxxxxxxxx',
+  defaultChannel: '#dev-team',
+  notifications: {
+    onCommit: true,
+    onPullRequest: true,
+    onBuildComplete: true
+  }
+});
+
+// 使用集成API
+const githubIssues = await kiro.integrations.github.getIssues({
+  state: 'open',
+  labels: ['bug', 'high-priority']
+});
+
+const jiraTasks = await kiro.integrations.jira.getTasks({
+  assignee: 'alice',
+  status: ['In Progress', 'To Do']
+});
+
+await kiro.integrations.slack.sendMessage({
+  channel: '#dev-team',
+  text: `发现 ${githubIssues.length} 个高优先级问题和 ${jiraTasks.length} 个待处理任务`
+});</code>
+                    </div>
+
+                    <h2>最佳实践</h2>
+                    <p>在使用KIRO IDE的项目管理和协作功能时，遵循以下最佳实践可以帮助您的团队更高效地协作。</p>
+
+                    <h3>团队设置最佳实践</h3>
+                    <ul>
+                        <li><strong>明确角色和权限</strong>：为团队成员分配适当的角色和权限</li>
+                        <li><strong>建立工作流程</strong>：定义清晰的工作流程和代码审查流程</li>
+                        <li><strong>统一开发环境</strong>：确保团队成员使用一致的开发环境配置</li>
+                        <li><strong>定期同步</strong>：安排定期团队同步会议，讨论进展和问题</li>
+                        <li><strong>文档化决策</strong>：记录重要技术决策和团队决策</li>
+                    </ul>
+
+                    <h3>项目管理最佳实践</h3>
+                    <ul>
+                        <li><strong>细化任务</strong>：将大任务分解为小的、可管理的任务</li>
+                        <li><strong>设置合理期限</strong>：为任务设置现实的时间期限</li>
+                        <li><strong>平衡工作负载</strong>：均匀分配工作，避免团队成员过载</li>
+                        <li><strong>跟踪进度</strong>：定期跟踪项目进度，及时调整计划</li>
+                        <li><strong>管理依赖</strong>：明确任务依赖关系，避免阻塞</li>
+                    </ul>
+
+                    <h3>代码质量最佳实践</h3>
+                    <ul>
+                        <li><strong>编写测试</strong>：为代码编写全面的测试</li>
+                        <li><strong>持续集成</strong>：设置CI流水线，自动测试和构建</li>
+                        <li><strong>代码审查</strong>：实施强制代码审查流程</li>
+                        <li><strong>代码规范</strong>：使用自动化工具强制代码规范</li>
+                        <li><strong>重构代码</strong>：定期重构代码，保持代码健康</li>
+                    </ul>
+
+                    <h3>沟通协作最佳实践</h3>
+                    <ul>
+                        <li><strong>及时沟通</strong>：及时分享信息和进展</li>
+                        <li><strong>建设性反馈</strong>：提供建设性的反馈和批评</li>
+                        <li><strong>知识分享</strong>：定期分享知识和经验</li>
+                        <li><strong>尊重不同意见</strong>：尊重并考虑团队成员的不同意见</li>
+                        <li><strong>解决冲突</strong>：积极解决团队冲突，维护团队和谐</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <h3>小贴士</h3>
+                        <p>定期回顾和改进团队协作流程，根据团队特点和项目需求调整最佳实践。使用KIRO IDE的分析工具监控团队效率和代码质量，持续优化开发流程。</p>
+                    </div>
+
+                    <h2>总结</h2>
+                    <p>通过本章的学习，您已经掌握了KIRO IDE的项目管理与协作功能。您了解了Steering功能、MCP上下文协议、团队协作工具、项目管理工具、代码审查流程和第三方集成。这些工具和功能将帮助您的团队更高效地协作，提高项目质量和交付速度。</p>
+
+                    <p>在最后一章中，我们将学习KIRO IDE的性能优化与故障排除技巧，帮助您解决开发过程中可能遇到的各种问题。</p>
+                </div>
+
+                <div class="module-nav">
+                    <div class="nav-prev">
+                        <a href="module-10.html" class="btn">← 第10章：Hooks与自动化</a>
+                    </div>
+                    <div class="nav-next">
+                        <a href="module-12.html" class="btn">第12章：性能优化与故障排除 →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KIRO IDE 中文教程. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

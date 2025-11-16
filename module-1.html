@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第1章：KIRO IDE 简介 - KIRO IDE 中文教程</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .module-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .module-header {
+            margin-bottom: 2rem;
+        }
+
+        .module-objectives {
+            background-color: #f0f9ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .module-objectives h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .module-content img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .code-block {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .tip-box {
+            background-color: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .tip-box h3 {
+            color: #d97706;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>KIRO IDE 教程</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-home">首页</a></li>
+                    <li><a href="module-1.html" class="nav-current">第1章</a></li>
+                    <li><a href="index.html#introduction">介绍</a></li>
+                    <li><a href="index.html#beginner">入门篇</a></li>
+                    <li><a href="index.html#intermediate">基础篇</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <div class="breadcrumb-item"><a href="index.html">首页</a></div>
+                <div class="breadcrumb-item"><a href="index.html#beginner">入门篇</a></div>
+                <div class="breadcrumb-item active">第1章：KIRO IDE 简介</div>
+            </nav>
+
+            <!-- 进度指示器 -->
+            <div class="progress-indicator">
+                <div class="progress-step completed">
+                    <div class="progress-circle">1</div>
+                    <div class="progress-label">第1章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">2</div>
+                    <div class="progress-label">第2章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">3</div>
+                    <div class="progress-label">第3章</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-circle">4</div>
+                    <div class="progress-label">第4章</div>
+                </div>
+            </div>
+
+            <!-- 侧边栏导航 -->
+            <aside class="sidebar">
+                <h3>本章导航</h3>
+                <ul class="sidebar-nav">
+                    <li><a href="#what-is-kiro">什么是KIRO IDE？</a></li>
+                    <li><a href="#core-features">核心特性</a></li>
+                    <li><a href="#spec-driven-development">规范驱动开发</a></li>
+                    <li><a href="#advantages">主要优势</a></li>
+                    <li><a href="#applicable-scenarios">适用场景</a></li>
+                    <li><a href="#limitations">不适用场景</a></li>
+                    <li><a href="#summary">总结</a></li>
+                </ul>
+
+                <h3>学习进度</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 100%"></div>
+                </div>
+                <p class="progress-text">第1章已完成</p>
+
+                <h3>快速操作</h3>
+                <button class="btn btn-secondary" onclick="updateLearningProgress('module-1', true)" style="width: 100%; margin-bottom: 0.5rem;">
+                    标记为已完成
+                </button>
+                <button class="btn" onclick="window.print()" style="width: 100%;">
+                    打印本章
+                </button>
+            </aside>
+
+            <div class="module-container" style="margin-right: 280px;">
+                <div class="module-header">
+                    <div class="tutorial-header">
+                        <h1>第1章：KIRO IDE 简介</h1>
+                        <div class="module-meta">
+                            <span class="tag beginner">入门</span>
+                            <span class="module-duration">预计学习时间：30分钟</span>
+                        </div>
+                    </div>
+                    <p class="module-subtitle">了解KIRO IDE的核心概念和特性</p>
+            </div>
+
+            <div class="module-container">
+                <div class="module-objectives">
+                    <h3>学习目标</h3>
+                    <ul>
+                        <li>了解KIRO IDE的基本概念和定位</li>
+                        <li>认识KIRO IDE的核心特性</li>
+                        <li>理解规范驱动开发（Spec-driven Development）的理念</li>
+                        <li>了解KIRO IDE与其他开发工具的区别</li>
+                        <li>认识KIRO IDE的主要应用场景</li>
+                    </ul>
+                </div>
+
+                <div class="module-content">
+                    <div class="tutorial-objectives">
+                        <h3>学习目标</h3>
+                        <ul>
+                            <li>了解KIRO IDE的基本概念和定位</li>
+                            <li>认识KIRO IDE的核心特性</li>
+                            <li>理解规范驱动开发（Spec-driven Development）的理念</li>
+                            <li>了解KIRO IDE与其他开发工具的区别</li>
+                            <li>认识KIRO IDE的主要应用场景</li>
+                        </ul>
+                    </div>
+
+                    <div class="tutorial-component">
+                        <h2 id="what-is-kiro">什么是KIRO IDE？</h2>
+                        <p>KIRO IDE是一个先进的AI驱动集成开发环境（IDE），由亚马逊AWS开发。它采用独特的规范驱动开发（Spec-driven Development）方法，通过AI辅助帮助开发者更高效地构建软件。</p>
+
+                        <p>与传统IDE不同，KIRO不仅是一个代码编辑器，更是一个智能开发助手，能够在开发过程中提供实时建议、自动完成功能，甚至根据您的规范（Specs）自动生成代码。</p>
+                    </div>
+
+                    <div class="tutorial-component">
+                        <h2 id="core-features">KIRO IDE的核心特性</h2>
+                        <p>KIRO IDE有以下几个核心特性，使其在众多开发工具中独树一帜：</p>
+
+                        <button class="collapsible">1. 规范驱动开发（Spec-driven Development）</button>
+                        <div class="collapsible-content">
+                            <p>这是KIRO IDE的核心理念。传统的开发流程通常是：需求 → 编码 → 测试。而KIRO将这一流程优化为：需求 → 规范（Spec） → AI生成代码 → 测试。通过编写详细的规范（Spec），KIRO的AI助手能够理解您的需求并生成相应的代码。</p>
+                        </div>
+
+                        <button class="collapsible">2. AI辅助编程</button>
+                        <div class="collapsible-content">
+                            <p>KIRO集成了先进的AI模型，能够在编写代码时提供智能建议、错误检测、代码补全等功能。这不仅提高了编码效率，还能帮助开发者学习最佳实践。</p>
+
+                            <p>例如，当您开始编写一个函数时，KIRO可能会根据上下文和命名约定，自动建议函数的实现：</p>
+
+                            <div class="code-block">
+                                <code>// 用户输入函数签名
+function calculateUserAge(birthDate) {
+    // KIRO AI建议实现
+    const today = new Date();
+    const birth = new Date(birthDate);
+    return Math.floor((today - birth) / (365.25 * 24 * 60 * 60 * 1000));
+}</code>
+                            </div>
+                        </div>
+
+                        <button class="collapsible">3. 智能聊天助手</button>
+                        <div class="collapsible-content">
+                            <p>KIRO内置了强大的聊天功能，允许开发者与AI进行自然语言交互。您可以通过聊天询问代码相关问题、请求调试帮助，甚至可以让AI解释复杂的代码逻辑。</p>
+                        </div>
+
+                        <button class="collapsible">4. 代码索引与智能导航</button>
+                        <div class="collapsible-content">
+                            <p>KIRO对整个代码库进行深度索引，提供强大的代码导航功能。您可以轻松找到函数定义、查看引用关系、了解代码结构等。</p>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-component">
+                        <h2 id="spec-driven-development">规范驱动开发详解</h2>
+                        <p>规范驱动开发是KIRO的核心理念，也是它与其他IDE的最大区别。传统开发中，开发者需要手动编写所有代码。而在KIRO中，您首先需要编写&quot;规范&quot;（Spec），这是一份详细描述功能需求的文档。</p>
+
+                        <div class="info-box">
+                            <h4>📖 定义</h4>
+                            <p>规范（Spec）是KIRO中用于描述功能需求的文档，它详细说明了要实现的功能、输入输出、业务逻辑等，是AI生成代码的基础。</p>
+                        </div>
+
+                        <p>一个规范（Spec）通常包含以下内容：</p>
+                    <ul class="step-list">
+                        <li><strong>功能描述</strong>：详细说明要实现的功能</li>
+                        <li><strong>输入输出</strong>：定义函数或模块的输入参数和预期输出</li>
+                        <li><strong>边界条件</strong>：考虑特殊情况和错误处理</li>
+                        <li><strong>性能要求</strong>：指定性能指标</li>
+                        <li><strong>安全要求</strong>：考虑安全方面的约束</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <h4>💡 小贴士</h4>
+                        <p>编写高质量的规范是成功使用KIRO的关键。规范越详细、越准确，AI生成的代码就越符合您的需求。</p>
+                    </div>
+
+                    <h3>规范驱动开发流程</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>步骤</th>
+                                    <th>传统开发</th>
+                                    <th>规范驱动开发</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1. 需求分析</td>
+                                    <td>理解需求，开始编码</td>
+                                    <td>理解需求，编写详细规范</td>
+                                </tr>
+                                <tr>
+                                    <td>2. 编码实现</td>
+                                    <td>手动编写所有代码</td>
+                                    <td>AI根据规范生成代码框架</td>
+                                </tr>
+                                <tr>
+                                    <td>3. 代码审查</td>
+                                    <td>人工审查代码逻辑</td>
+                                    <td>审查生成的代码是否符合规范</td>
+                                </tr>
+                                <tr>
+                                    <td>4. 测试调试</td>
+                                    <td>发现并修复bug</td>
+                                    <td>测试并优化AI生成的代码</td>
+                                </tr>
+                                <tr>
+                                    <td>5. 维护更新</td>
+                                    <td>手动修改代码</td>
+                                    <td>更新规范，重新生成相关代码</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>实践演示：用户注册功能</h3>
+                    <p>让我们通过一个具体的例子来了解规范驱动开发的工作流程。假设我们要实现一个用户注册功能：</p>
+
+                    <div class="tutorial-component">
+                        <h4>步骤1：编写详细规范</h4>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>用户注册功能规范</span>
+                                <button class="code-copy" onclick="copyCode(this)">复制</button>
+                            </div>
+                            <div class="code-block">
+                                <code># 用户注册功能规范
+
+## 功能描述
+实现用户注册功能，允许新用户创建账户。
+
+## 输入验证
+- 用户名（字符串，3-20个字符，仅字母数字下划线）
+- 邮箱（有效邮箱格式）
+- 密码（至少8个字符，包含大小写字母和数字）
+- 确认密码（必须与密码一致）
+
+## 业务逻辑
+1. 接收用户输入
+2. 验证输入格式
+3. 检查用户名和邮箱唯一性
+4. 密码强度验证
+5. 创建用户记录
+6. 发送激活邮件
+7. 返回操作结果
+
+## 输出结果
+成功：返回用户信息和访问令牌
+失败：返回详细的错误信息
+
+## 边界条件
+- 用户名已存在：返回错误
+- 邮箱格式不正确：返回错误
+- 密码强度不足：返回错误
+- 确认密码不匹配：返回错误
+- 数据库连接失败：返回系统错误
+
+## 安全要求
+- 密码使用bcrypt加密存储（salt rounds: 10）
+- 防止SQL注入攻击
+- 限制注册频率（每分钟最多5次）
+- 记录注册IP地址和时间</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-component">
+                        <h4>步骤2：AI代码生成</h4>
+                        <p>在KIRO中创建上述规范后，AI会分析规范并生成相应的代码框架：</p>
+
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>AI生成的代码框架</span>
+                                <button class="code-copy" onclick="copyCode(this)">复制</button>
+                            </div>
+                            <div class="code-block">
+                                <code>/**
+ * 用户注册服务
+ * 根据规范自动生成的基础代码框架
+ */
+class UserRegistrationService {
+    constructor(database, emailService, validator) {
+        this.db = database;
+        this.emailService = emailService;
+        this.validator = validator;
+        this.rateLimiter = new RateLimiter(5, 60000); // 5次/分钟
+    }
+
+    async register(userData) {
+        try {
+            // 1. 验证输入格式
+            const validation = await this.validateInput(userData);
+            if (!validation.isValid) {
+                return {
+                    success: false,
+                    errors: validation.errors
+                };
+            }
+
+            // 2. 检查频率限制
+            if (!this.rateLimiter.tryConsume(userData.ip)) {
+                throw new Error('注册频率过高，请稍后再试');
+            }
+
+            // 3. 检查唯一性
+            const uniqueness = await this.checkUniqueness(userData);
+            if (!uniqueness.isUnique) {
+                return {
+                    success: false,
+                    errors: uniqueness.conflicts
+                };
+            }
+
+            // 4. 创建用户记录
+            const user = await this.createUser(userData);
+
+            // 5. 发送激活邮件
+            await this.sendActivationEmail(user.email, user.activationToken);
+
+            return {
+                success: true,
+                data: {
+                    userId: user.id,
+                    email: user.email,
+                    username: user.username
+                },
+                message: '注册成功，请检查邮箱激活账户'
+            };
+
+        } catch (error) {
+            console.error('注册失败:', error);
+            return {
+                success: false,
+                error: '系统错误，请稍后重试'
+            };
+        }
+    }
+
+    // 验证输入格式
+    async validateInput(data) {
+        const errors = [];
+
+        // 验证用户名
+        if (!/^[a-zA-Z0-9_]{3,20}$/.test(data.username)) {
+            errors.push({
+                field: 'username',
+                message: '用户名必须是3-20个字符，仅包含字母、数字和下划线'
+            });
+        }
+
+        // 验证邮箱
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+            errors.push({
+                field: 'email',
+                message: '请输入有效的邮箱地址'
+            });
+        }
+
+        // 验证密码
+        if (!this.isStrongPassword(data.password)) {
+            errors.push({
+                field: 'password',
+                message: '密码至少8个字符，包含大小写字母和数字'
+            });
+        }
+
+        // 验证确认密码
+        if (data.password !== data.confirmPassword) {
+            errors.push({
+                field: 'confirmPassword',
+                message: '两次输入的密码不一致'
+            });
+        }
+
+        return {
+            isValid: errors.length === 0,
+            errors
+        };
+    }
+
+    // 检查密码强度
+    isStrongPassword(password) {
+        if (password.length < 8) return false;
+        if (!/[a-z]/.test(password)) return false;
+        if (!/[A-Z]/.test(password)) return false;
+        if (!/\d/.test(password)) return false;
+        return true;
+    }
+
+    // 其他方法实现...
+}</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-component">
+                        <h4>步骤3：代码审查和优化</h4>
+                        <p>AI生成的代码为我们提供了良好的基础，但我们需要审查和优化以确保它完全符合我们的需求：</p>
+
+                        <div class="info-box">
+                            <h4>🔍 审查要点</h4>
+                            <ul>
+                                <li>代码结构是否清晰</li>
+                                <li>错误处理是否完善</li>
+                                <li>性能是否满足要求</li>
+                                <li>安全性是否足够</li>
+                                <li>是否符合项目规范</li>
+                            </ul>
+                        </div>
+
+                        <p>根据审查结果，我们可以：</p>
+                        <ul class="step-list">
+                            <li>调整规范描述，让AI生成更准确的代码</li>
+                            <li>手动优化关键部分的实现</li>
+                            <li>添加额外的功能和验证逻辑</li>
+                            <li>完善错误处理和日志记录</li>
+                        </ul>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h4>📝 动手练习</h4>
+                        <p><strong>练习目标：</strong>编写您的第一个功能规范</p>
+                        <p><strong>练习内容：</strong>为"用户登录功能"编写一个详细的规范，包含：</p>
+                        <ul>
+                            <li>功能描述和目的</li>
+                            <li>输入参数和验证规则</li>
+                            <li>业务逻辑步骤</li>
+                            <li>成功和失败的输出格式</li>
+                            <li>边界条件和错误处理</li>
+                            <li>安全要求和限制</li>
+                        </ul>
+
+                        <button class="collapsible">查看提示</button>
+                        <div class="collapsible-content">
+                            <p><strong>提示：</strong></p>
+                            <ul>
+                                <li>考虑各种输入情况：正确的、错误的、边界的</li>
+                                <li>思考安全性：密码验证、账户锁定、防止暴力破解</li>
+                                <li>定义清晰的错误信息和状态码</li>
+                                <li>考虑性能：是否需要缓存、数据库查询优化</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p>编写好Spec后，KIRO会分析规范并开始生成相应的代码，大大提高了开发效率和代码质量。</p>
+
+                    <div class="warning-box">
+                        <h4>⚠️ 注意事项</h4>
+                        <p>虽然KIRO能够生成高质量的代码，但开发者仍需要审查和测试生成的代码，确保其符合业务需求和质量标准。</p>
+                    </div>
+                </div>
+
+                <div class="tutorial-component">
+                    <h2 id="advantages">KIRO IDE的主要优势</h2>
+                    <p>相比传统IDE，KIRO IDE有以下显著优势：</p>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>优势</th>
+                                    <th>传统IDE</th>
+                                    <th>KIRO IDE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>开发效率</strong></td>
+                                    <td>手动编写所有代码</td>
+                                    <td>AI辅助生成代码，专注业务逻辑</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>代码质量</strong></td>
+                                    <td>依赖开发者经验</td>
+                                    <td>AI遵循最佳实践，减少错误</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>学习曲线</strong></td>
+                                    <td>需要掌握所有技术细节</td>
+                                    <td>通过规范描述需求，降低技术门槛</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>协作效率</strong></td>
+                                    <td>代码审查耗时</td>
+                                    <td>规范审查更直观，AI生成代码一致性好</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h4>📝 练习</h4>
+                        <p><strong>思考题：</strong>请思考您当前或最近的一个开发项目，如果使用KIRO的规范驱动开发方式，您会如何编写相应的Spec？请尝试写出关键的功能描述和边界条件。</p>
+                        <button class="collapsible">查看提示</button>
+                        <div class="collapsible-content">
+                            <p>思考以下方面：</p>
+                            <ul>
+                                <li>这个功能的核心目标是什么？</li>
+                                <li>需要处理哪些输入数据？</li>
+                                <li>期望的输出结果是什么？</li>
+                                <li>有哪些特殊情况需要考虑？</li>
+                                <li>有什么性能或安全要求？</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-component">
+                        <h3>实际应用案例</h3>
+                        <p>让我们看一个真实的案例，了解KIRO IDE如何在实际项目中发挥作用：</p>
+
+                        <div class="info-box">
+                            <h4>🏢 案例：电商平台订单管理系统</h4>
+                            <p>某电商平台需要开发一个复杂的订单管理系统，传统开发方式预计需要2个月时间。使用KIRO IDE后：</p>
+                            <ul>
+                                <li><strong>第1周：</strong>团队编写了详细的订单管理规范（50页文档）</li>
+                                <li><strong>第2-3周：</strong>AI生成了70%的基础代码框架</li>
+                                <li><strong>第4-6周：</strong>开发者专注于业务逻辑优化和特殊场景处理</li>
+                                <li><strong>结果：</strong>项目提前2周完成，代码质量显著提升</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>对于初学者，KIRO的智能提示和聊天助手可以帮助他们更快地理解代码和学习编程概念。</p>
+
+                    <h3>4. 改善团队协作</h3>
+                    <p>规范驱动开发使得团队成员对功能需求有一致的理解，减少沟通成本。</p>
+
+                    <div class="tutorial-component">
+                        <h2 id="applicable-scenarios">KIRO IDE的适用场景</h2>
+                        <p>KIRO IDE特别适用于以下场景：</p>
+
+                        <div class="feature-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">🚀</div>
+                                <h3>快速原型开发</h3>
+                                <p>利用AI快速生成代码原型，加速产品验证。特别适合创业公司和敏捷开发团队。</p>
+                                <ul>
+                                    <li>快速验证产品概念</li>
+                                    <li>减少初期开发时间</li>
+                                    <li>快速迭代和反馈</li>
+                                </ul>
+                            </div>
+
+                            <div class="feature-card">
+                                <div class="feature-icon">🔧</div>
+                                <h3>复杂功能实现</h3>
+                                <p>通过详细规范确保功能完整性，减少遗漏。适合处理复杂的业务逻辑。</p>
+                                <ul>
+                                    <li>确保功能完整性</li>
+                                    <li>减少开发遗漏</li>
+                                    <li>提高代码质量</li>
+                                </ul>
+                            </div>
+
+                            <div class="feature-card">
+                                <div class="feature-icon">👥</div>
+                                <h3>团队协作开发</h3>
+                                <p>规范作为团队沟通的标准，提高协作效率。减少沟通误解。</p>
+                                <ul>
+                                    <li>统一团队标准</li>
+                                    <li>减少沟通成本</li>
+                                    <li>提高协作效率</li>
+                                </ul>
+                            </div>
+
+                            <div class="feature-card">
+                                <div class="feature-icon">📚</div>
+                                <h3>学习编程</h3>
+                                <p>AI助手提供实时帮助和指导，加速学习过程。适合初学者和进阶开发者。</p>
+                                <ul>
+                                    <li>实时代码解释</li>
+                                    <li>最佳实践建议</li>
+                                    <li>个性化学习路径</li>
+                                </ul>
+                            </div>
+
+                            <div class="feature-card">
+                                <div class="feature-icon">🔄</div>
+                                <h3>代码重构</h3>
+                                <p>AI分析现有代码并提出改进建议，优化代码结构。提升代码质量。</p>
+                                <ul>
+                                    <li>识别代码问题</li>
+                                    <li>提供重构建议</li>
+                                    <li>优化代码结构</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <h4>🎯 最佳实践</h4>
+                            <p>对于初次使用KIRO的开发者，建议从简单的功能开始，逐步熟悉规范编写的技巧和AI生成代码的特点。</p>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-component">
+                        <h2 id="limitations">不适用场景说明</h2>
+                        <p>虽然KIRO IDE功能强大，但在某些场景下可能不是最佳选择：</p>
+
+                        <div class="warning-box">
+                            <h4>⚠️ 注意限制</h4>
+                            <ul>
+                                <li><strong>极高性能要求：</strong>对性能要求极其苛刻的系统可能需要手动优化</li>
+                                <li><strong>底层系统开发：</strong>操作系统、驱动程序等底层开发</li>
+                                <li><strong>算法密集型：</strong>复杂的算法实现可能需要人工设计</li>
+                                <li><strong>高度定制化：</strong>需要高度定制化且没有明确规范的项目</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-component">
+                        <h2 id="summary">本章总结</h2>
+                        <p>通过本章的学习，您应该已经了解了：</p>
+
+                        <div class="tutorial-objectives">
+                            <h3>✅ 学习目标达成检查</h3>
+                            <ul>
+                                <li><strong>✓ 已掌握：</strong> KIRO IDE的基本概念和定位</li>
+                                <li><strong>✓ 已掌握：</strong> KIRO IDE的核心特性和优势</li>
+                                <li><strong>✓ 已掌握：</strong> 规范驱动开发（Spec-driven Development）的理念</li>
+                                <li><strong>✓ 已掌握：</strong> KIRO IDE与其他开发工具的区别</li>
+                                <li><strong>✓ 已掌握：</strong> KIRO IDE的主要应用场景</li>
+                            </ul>
+                        </div>
+
+                        <div class="tip-box">
+                            <h4>💡 学习建议</h4>
+                            <p><strong>下一步：</strong>在接下来的教程中，您将学习如何安装和使用KIRO IDE，逐步掌握其各项功能。</p>
+                            <p><strong>实践建议：</strong>尝试为简单功能编写规范，体验规范驱动开发的流程。</p>
+                        </div>
+
+                        <div class="info-box">
+                            <h4>📚 相关资源</h4>
+                            <ul>
+                                <li><a href="#" onclick="showResource('official-docs')">📖 官方文档</a> - 获取最新的功能信息</li>
+                                <li><a href="#" onclick="showResource('community')">👥 社区论坛</a> - 与其他用户交流经验</li>
+                                <li><a href="#" onclick="showResource('examples')">💡 示例代码</a> - 查看更多实际案例</li>
+                            </ul>
+                        </div>
+
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                        <p class="progress-text">✅ 第1章学习完成！</p>
+                    </div>
+
+                    <div class="tutorial-component">
+                        <h2>🎯 本章测验</h2>
+                        <p>测试您对本章内容的理解程度：</p>
+
+                        <div class="quiz-container">
+                            <div class="quiz-question">
+                                <h4>问题1：KIRO IDE的核心理念是什么？</h4>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q1" value="a"> A. 传统的代码编辑</label><br>
+                                    <label><input type="radio" name="q1" value="b"> B. 规范驱动的开发方式</label><br>
+                                    <label><input type="radio" name="q1" value="c"> C. 纯手动的代码编写</label><br>
+                                    <label><input type="radio" name="q1" value="d"> D. 完全自动化的开发</label>
+                                </div>
+                                <button class="btn btn-secondary" onclick="checkAnswer('q1', 'b')">检查答案</button>
+                                <div class="quiz-feedback" id="q1-feedback"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <h4>问题2：以下哪个不是KIRO IDE的核心特性？</h4>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q2" value="a"> A. 规范驱动开发</label><br>
+                                    <label><input type="radio" name="q2" value="b"> B. AI辅助编程</label><br>
+                                    <label><input type="radio" name="q2" value="c"> C. 智能聊天助手</label><br>
+                                    <label><input type="radio" name="q2" value="d"> D. 完全自动化的测试</label>
+                                </div>
+                                <button class="btn btn-secondary" onclick="checkAnswer('q2', 'd')">检查答案</button>
+                                <div class="quiz-feedback" id="q2-feedback"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <h4>问题3：规范（Spec）通常包含哪些内容？（多选）</h4>
+                                <div class="quiz-options">
+                                    <label><input type="checkbox" name="q3" value="a"> A. 功能描述</label><br>
+                                    <label><input type="checkbox" name="q3" value="b"> B. 输入输出定义</label><br>
+                                    <label><input type="checkbox" name="q3" value="c"> C. 边界条件</label><br>
+                                    <label><input type="checkbox" name="q3" value="d"> D. 性能要求</label>
+                                </div>
+                                <button class="btn btn-secondary" onclick="checkMultipleAnswer('q3', ['a', 'b', 'c', 'd'])">检查答案</button>
+                                <div class="quiz-feedback" id="q3-feedback"></div>
+                            </div>
+                        </div>
+
+                        <div class="exercise-box">
+                            <h4>🎯 实践任务</h4>
+                            <p><strong>任务：</strong>完成以下实践任务，巩固本章所学内容：</p>
+
+                            <div class="task-list">
+                                <div class="task-item">
+                                    <input type="checkbox" id="task1" onchange="updateTaskProgress()">
+                                    <label for="task1">✅ 下载并安装KIRO IDE（下一章将详细介绍）</label>
+                                </div>
+                                <div class="task-item">
+                                    <input type="checkbox" id="task2" onchange="updateTaskProgress()">
+                                    <label for="task2">📝 为您的第一个项目编写一个简单的功能规范</label>
+                                </div>
+                                <div class="task-item">
+                                    <input type="checkbox" id="task3" onchange="updateTaskProgress()">
+                                    <label for="task3">🤝 加入KIRO社区，与其他学习者交流经验</label>
+                                </div>
+                                <div class="task-item">
+                                    <input type="checkbox" id="task4" onchange="updateTaskProgress()">
+                                    <label for="task4">📖 阅读官方文档，了解最新功能更新</label>
+                                </div>
+                            </div>
+
+                            <div class="progress-container" style="margin-top: 20px;">
+                                <div class="progress-bar" id="task-progress" style="width: 0%"></div>
+                            </div>
+                            <p id="task-progress-text">实践任务完成度：0/4</p>
+                        </div>
+
+                <div class="module-nav">
+                    <div class="nav-prev">
+                        <!-- 之前没有模块，所以暂时为空 -->
+                    </div>
+                    <div class="nav-next">
+                        <a href="module-2.html" class="btn">第2章：安装与设置 →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KIRO IDE 中文教程. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

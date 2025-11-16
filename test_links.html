@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链接测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .link-group {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        .link-group h4 {
+            margin-top: 0;
+        }
+        .link-group a {
+            display: block;
+            margin: 5px 0;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .link-group a:hover {
+            text-decoration: underline;
+        }
+        .test-result {
+            margin-top: 10px;
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>KIRO IDE教程链接测试</h1>
+    
+    <div class="test-section">
+        <h2>模块页面导航链接测试</h2>
+        <p>测试各模块页面中的锚点链接是否能正确跳转：</p>
+        
+        <div class="link-group">
+            <h4>module-1.html</h4>
+            <a href="module-1.html#introduction" target="test-frame">介绍</a>
+            <a href="module-1.html#beginner" target="test-frame">入门篇</a>
+            <a href="module-1.html#intermediate" target="test-frame">基础篇</a>
+        </div>
+        
+        <div class="link-group">
+            <h4>module-2.html</h4>
+            <a href="module-2.html#introduction" target="test-frame">介绍</a>
+            <a href="module-2.html#beginner" target="test-frame">入门篇</a>
+            <a href="module-2.html#intermediate" target="test-frame">基础篇</a>
+        </div>
+        
+        <div class="link-group">
+            <h4>module-3.html</h4>
+            <a href="module-3.html#introduction" target="test-frame">介绍</a>
+            <a href="module-3.html#beginner" target="test-frame">入门篇</a>
+            <a href="module-3.html#intermediate" target="test-frame">基础篇</a>
+        </div>
+        
+        <div class="link-group">
+            <h4>module-7.html</h4>
+            <a href="module-7.html#introduction" target="test-frame">介绍</a>
+            <a href="module-7.html#beginner" target="test-frame">入门篇</a>
+            <a href="module-7.html#advanced" target="test-frame">进阶篇</a>
+        </div>
+        
+        <div class="link-group">
+            <h4>module-8.html</h4>
+            <a href="module-8.html#introduction" target="test-frame">介绍</a>
+            <a href="module-8.html#beginner" target="test-frame">入门篇</a>
+            <a href="module-8.html#advanced" target="test-frame">进阶篇</a>
+        </div>
+        
+        <h3>测试结果</h3>
+        <iframe id="test-frame" name="test-frame"></iframe>
+        <div class="test-result">
+            <p>1. 点击上面的链接，观察iframe中的跳转情况</p>
+            <p>2. 模块页面中的介绍/入门篇/基础篇/进阶篇链接应跳转到index.html对应部分</p>
+            <p>3. 所有跳转应平滑且无错误</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>直接访问验证</h2>
+        <p>直接访问以下链接验证跳转结果：</p>
+        <ul>
+            <li><a href="index.html#introduction" target="_blank">index.html#introduction</a></li>
+            <li><a href="index.html#beginner" target="_blank">index.html#beginner</a></li>
+            <li><a href="index.html#intermediate" target="_blank">index.html#intermediate</a></li>
+            <li><a href="index.html#advanced" target="_blank">index.html#advanced</a></li>
+        </ul>
+    </div>
+    
+    <div class="test-section">
+        <h2>平滑滚动功能测试</h2>
+        <p>测试index.html中的锚点是否能平滑滚动：</p>
+        <iframe src="index.html" id="index-frame" style="height: 400px;"></iframe>
+        <button onclick="testSmoothScroll()">测试平滑滚动到入门篇</button>
+        <script>
+            function testSmoothScroll() {
+                const frame = document.getElementById('index-frame');
+                frame.contentWindow.location.hash = '#beginner';
+            }
+        </script>
+    </div>
+</body>
+</html>
